@@ -1,6 +1,6 @@
 package interieur;
 
-import java.interieur.Plateau;
+import interieur.Plateau;
 
 public class Voiture {
     int taille_voiture;

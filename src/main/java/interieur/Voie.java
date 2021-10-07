@@ -1,13 +1,13 @@
 package interieur;
 
 import java.util.ArrayList;
-import java.interieur.Voiture;
+import interieur.Voiture;
 
 public class Voie {
     int sens ;
     double v;
     double frequence;
-    private ArrayList <Voie> voitures = new ArrayList <Voie> ;
+    private ArrayList <Voiture> voitures = new ArrayList <Voiture> ();
 
     public Voie () {
         sens = (int)(Math.random() -1);
@@ -19,7 +19,7 @@ public class Voie {
     public void nouvelle_voiture (){
         double r = Math.random ();
         if (r < this.frequence) {
-            voitures.add(Voiture (v));
+            voitures.add( new Voiture (v));
         }
     }
 

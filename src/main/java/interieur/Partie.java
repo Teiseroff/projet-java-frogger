@@ -1,16 +1,18 @@
-import java.interieur.Plateau;
+package interieur;
+import interieur.Plateau;
+
 import java.security.KeyStore;
 
 public class Partie {
-    public boolean You_Win = false;
-    public boolean You_Loose = false;
+    public static boolean You_Win = false;
+    public static boolean You_Loose = false;
     public int nb_voies ;
     public Plateau plateau ;
 
     public Partie (int nb_voie){
         You_Win = false;
         You_Loose = false;
-        plateau = Plateau.Plateau (10.5f,20.5f, 3,5f, nb_voie);
+        plateau = new Plateau (nb_voie);
         nb_voies = nb_voie;
 
     }
@@ -36,10 +38,10 @@ public class Partie {
         //}
         // mettre à jour la scène
 
-        for (Voie voie  : Plateau.voies){
+        for (Voie voie  : interieur.Plateau.voies){
             for (Voiture voiture : voie.voitures){
-                if (Grenouille.collision(plateau.froggy)){
-                    timer.stop();
+                if (interieur.Grenouille.collision(plateau.froggy)){
+                    //timer.stop();
                     You_Loose = true;
                 }
             }
@@ -81,7 +83,7 @@ public class Partie {
             /// update le dessin
         }
         // update le dessin
-        timer.stop()
+        // timer.stop()
     }
 
 }
