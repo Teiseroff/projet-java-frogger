@@ -51,9 +51,9 @@ public class Grenouille {
         }
     }
 
-    public boolean collision (float voiture_g, float voiture_d){
-        if ((voiture_g <= this.g && this.g <= voiture_d) || (voiture_g <= this.d && this.d <= voiture_d) || (this.g <= voiture_g && voiture_g <= this.d)
-                || (this.g <= voiture_d && voiture_d <= this.d)){
+    public boolean collision (Voiture voiture){
+        if ((voiture.g_voiture <= this.g && this.g <= voiture.d_voiture) || (voiture.g_voiture <= this.d && this.d <= voiture.d_voiture) || (this.g <= voiture.g_voiture && voiture.g_voiture <= this.d)
+                || (this.g <= voiture.d_voiture && voiture.d_voiture <= this.d)){
             return true;
     }
         return false;

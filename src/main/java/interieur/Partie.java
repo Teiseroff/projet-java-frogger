@@ -38,9 +38,9 @@ public class Partie {
         //}
         // mettre à jour la scène
 
-        for (Voie voie  : interieur.Plateau.voies){
+        for (Voie voie  : plateau.voies){
             for (Voiture voiture : voie.voitures){
-                if (interieur.Grenouille.collision(plateau.froggy)){
+                if (plateau.froggy.collision(voiture)){
                     //timer.stop();
                     You_Loose = true;
                 }
@@ -57,26 +57,26 @@ public class Partie {
     public void timer_0 () {
         if (! You_Win) {
 
-            for (Voie voie  : Plateau.voies){
+            for (Voie voie  : plateau.voies){
                 for (Voiture voiture : voie.voitures){
-                    if (Voiture.proche_bord (voiture)){
-                        voie.remove(voiture);
+                    if (voiture.proche_bord ()){
+                        // voie.remove(voiture);
                     }
                 }
             }
 
-            for (Voie voie  : Plateau.voies){
+            for (Voie voie  : plateau.voies){
                 for (Voiture voiture : voie.voitures){
-                    if (Grenouille.collision(plateau.froggy)){
-                        timer.stop();
+                    if (plateau.froggy.collision(voiture)){
+                        //timer.stop();
                         You_Loose = true;
                     }
                 }
             }
 
-            for (Voie voie  : Plateau.voies){
+            for (Voie voie  : plateau.voies){
                 for (Voiture voiture : voie.voitures){
-                    Voiture.evolution (voiture);
+                    voiture.deplacement_voiture ();
                 }
             }
 

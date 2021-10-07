@@ -7,7 +7,7 @@ public class Voie {
     int sens ;
     double v;
     double frequence;
-    private ArrayList <Voiture> voitures = new ArrayList <Voiture> ();
+    public ArrayList <Voiture> voitures = new ArrayList <Voiture> ();
 
     public Voie () {
         sens = (int)(Math.random() -1);
