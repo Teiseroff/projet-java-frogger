@@ -1,6 +1,6 @@
 package com.frogger.components;
 
-import interieur.Plateau;
+import com.frogger.components.Plateau;
 
 import javax.swing.*;
 import java.awt.event.*;
