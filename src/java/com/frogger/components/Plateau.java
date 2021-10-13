@@ -10,8 +10,10 @@ public class Plateau {
     public ArrayList <Voie> voies = new ArrayList <Voie> () ;
     public static float eps = 0.1f; // à modifier pour l'IHM
     public Grenouille froggy;
+    public int nb_voie ;
 
     public Plateau (int nb_voies){
+        this.nb_voie = nb_voies;
         this.y_taille_case = this.y_plateau / nb_voies; // on détermine la hauteur de chaque voie
         this.eps = x_taille_case/8;
         this.voies = new ArrayList <> (nb_voies);
