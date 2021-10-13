@@ -1,6 +1,4 @@
-package interieur;
-
-import interieur.Plateau;
+package com.frogger.components;
 
 public class Voiture {
     int taille_voiture;

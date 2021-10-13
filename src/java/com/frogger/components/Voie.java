@@ -1,7 +1,6 @@
-package interieur;
+package com.frogger.components;
 
 import java.util.ArrayList;
-import interieur.Voiture;
 
 public class Voie {
     int sens ;

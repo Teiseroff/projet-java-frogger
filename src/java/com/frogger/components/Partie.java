@@ -1,7 +1,4 @@
-package interieur;
-import interieur.Plateau;
-
-import java.security.KeyStore;
+package com.frogger.components;
 
 public class Partie {
     public static boolean You_Win = false;

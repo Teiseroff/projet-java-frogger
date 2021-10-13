@@ -1,9 +1,6 @@
-package interieur;
+package com.frogger.components;
 
 import java.util.ArrayList;
-import java.lang.Math;
-import interieur.Voie;
-import interieur.Grenouille;
 
 public class Plateau {
     public static float x_taille_case = 1;
@@ -21,6 +18,6 @@ public class Plateau {
         for (int i =0; i < nb_voies; i++) {
             this.voies.set(i, new Voie());
         }
-        this.froggy = new interieur.Grenouille(0,0);
+        this.froggy = new Grenouille(0,0);
     }
 }
