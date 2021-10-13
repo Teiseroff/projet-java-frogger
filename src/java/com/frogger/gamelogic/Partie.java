@@ -1,6 +1,8 @@
-package com.frogger.components;
+package com.frogger.gamelogic;
 
 import com.frogger.components.Plateau;
+import com.frogger.components.Voie;
+import com.frogger.components.Voiture;
 
 import javax.swing.*;
 import java.awt.event.*;
