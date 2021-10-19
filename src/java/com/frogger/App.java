@@ -9,11 +9,18 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color ;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 
 public class App extends Application {
@@ -61,6 +68,9 @@ public class App extends Application {
         //Image window_icon = new Image("Users/hendr/Desktop/COURS/S3/JAVA/projet-java-frogger/src/resources/assets/shrek.png") ;
         //stage.getIcons().add(window_icon) ;
         stage.show();
+
+        //Image billard = new Image("") ;
+
     }
 
     public void mainstart(Stage primaryStage) {
@@ -76,8 +86,12 @@ public class App extends Application {
 
     }
 
+
+
     public static void main(String[] args) {
+
         launch(args) ;
+
     }
 
 }

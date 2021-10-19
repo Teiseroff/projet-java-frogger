@@ -14,6 +14,14 @@ import java.util.EventListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 // import java.security.KeyStore;
 
@@ -155,11 +163,12 @@ public class Partie {
                     }
                 }
 
-                /// update le dessin
+                /// TODO update le dessin
             }
-            // update le dessin
+            // TODO update le dessin
             You_Win = true ;
         }
     };
+
 }
 
