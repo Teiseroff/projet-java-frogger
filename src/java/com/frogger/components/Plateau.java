@@ -20,6 +20,7 @@ public class Plateau {
         for (int i =0; i < nb_voies; i++) {
             this.voies.set(i, new Voie());
         }
+
         this.froggy = new Grenouille(0,0);
     }
 }

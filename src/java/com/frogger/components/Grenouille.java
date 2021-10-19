@@ -13,7 +13,7 @@ public class Grenouille {
     private float b,h,g,d;  //  coordonée de gauche, droite, haut bas de la grenouille
     private boolean bord_b, bord_g, bord_d;  // boolean qui sont à vrai sur la grenouille est au bord du jeu (et ne pourra plus se déplacer du coté de ce bord)
 
-    // insérer la photo ici je crois, ou pas jcp
+    // TODO insérer la photo ici je crois, ou pas jcp
 
     public Grenouille ( float b, float g) {   // on instancie la grenouille en entrant ses cooordonnées de gauche et du bas de départ. Celles du haut et de droite sont déduites par translation de la taille d'une case (x_taille_case et y_taille_case))
         this.b = b + Plateau.eps;    // on rajoute le eps pour ne pas remplir pile la case et avoir des pb de collisions avec les voies voisines

@@ -63,37 +63,37 @@ public class Partie {
     }
 
 
-    public void timer_0() {
-        if (!You_Win) {
-
-            for (Voie voie : plateau.voies) {
-                for (Voiture voiture : voie.voitures) {
-                    if (voiture.proche_bord()) {
-                        // voie.remove(voiture);
-                    }
-                }
-            }
-
-            for (Voie voie : plateau.voies) {
-                for (Voiture voiture : voie.voitures) {
-                    if (plateau.froggy.collision(voiture)) {
-                        //timer.stop();
-                        You_Loose = true;
-                    }
-                }
-            }
-
-            for (Voie voie : plateau.voies) {
-                for (Voiture voiture : voie.voitures) {
-                    voiture.deplacement_voiture();
-                }
-            }
-
-            /// update le dessin
-        }
-        // update le dessin
-        // timer.stop()
-    }
+//    public void timer_0() {
+//        if (!You_Win) {
+//
+//            for (Voie voie : plateau.voies) {
+//                for (Voiture voiture : voie.voitures) {
+//                    if (voiture.proche_bord()) {
+//                        // voie.remove(voiture);
+//                    }
+//                }
+//            }
+//
+//            for (Voie voie : plateau.voies) {
+//                for (Voiture voiture : voie.voitures) {
+//                    if (plateau.froggy.collision(voiture)) {
+//                        //timer.stop();
+//                        You_Loose = true;
+//                    }
+//                }
+//            }
+//
+//            for (Voie voie : plateau.voies) {
+//                for (Voiture voiture : voie.voitures) {
+//                    voiture.deplacement_voiture();
+//                }
+//            }
+//
+//            /// update le dessin
+//        }
+//        // update le dessin
+//        // timer.stop()
+//    }
 
     ActionListener taskPerformer = new ActionListener() {
         @Override
