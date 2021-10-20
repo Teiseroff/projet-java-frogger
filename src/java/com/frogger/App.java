@@ -22,12 +22,12 @@ public class App extends Application {
     public void start(Stage primaryStage) {
         Group root = new Group() ;
 
-        Button btn = new Button() ;
-        btn.setText("START") ;
-        btn.setOnAction(new EventHandler<ActionEvent>(){
+        Button start_btn = new Button() ;
+        start_btn.setText("START") ;
+        start_btn.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event){
-                mainstart(primaryStage) ;
+                mainstart() ;
             }
         });
 
@@ -36,10 +36,10 @@ public class App extends Application {
 
         crazyfrog_title.setX(50) ;
         crazyfrog_title.setY(50) ;
-        btn.setLayoutX(70);
-        btn.setLayoutY(50); 
+        start_btn.setLayoutX(70);
+        start_btn.setLayoutY(50);
 
-        root.getChildren().add(btn) ;
+        root.getChildren().add(start_btn) ;
         root.getChildren().add(crazyfrog_title);
 
 
@@ -58,22 +58,61 @@ public class App extends Application {
 
         stage.setTitle("Crazy Frog");
         stage.setScene(titleMenu);
+
         //Image window_icon = new Image("Users/hendr/Desktop/COURS/S3/JAVA/projet-java-frogger/src/resources/assets/shrek.png") ;
         //stage.getIcons().add(window_icon) ;
         stage.show();
     }
 
-    public void mainstart(Stage primaryStage) {
-        StackPane root_mainMenu = new StackPane() ;
+    public void mainstart() {
+        Group root_mainMenu = new Group() ;
+        Group root_game = new Group() ;
+        Group root_options = new Group() ;
         Scene mainMenu = new Scene(root_mainMenu, 1920, 1080, Color.BLACK) ;
-        
+        Stage mainStage = new Stage() ;
+
+        Scene game_scene = new Scene(root_game, 1920, 1080, Color.GREEN) ;
+
+        Button gamestart_btn = new Button() ;
+        gamestart_btn.setText("GAME START");
+        root_mainMenu.getChildren().add(gamestart_btn) ;
+        gamestart_btn.setLayoutX(0);
+        gamestart_btn.setLayoutY(50);
+        gamestart_btn.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){gamestart(mainStage, game_scene) ;
+            }
+        });
+
+        Scene options_scene = new Scene(root_options,1920,1080, Color.GREY) ;
+
+        Button options_button = new Button() ;
+        options_button.setText("OPTIONS");
+        root_mainMenu.getChildren().add(options_button) ;
+        options_button.setLayoutX(0);
+        options_button.setLayoutY(-50);
+        options_button.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+                runOptions(mainStage,options_scene) ;
+            }
+        });
 
 
-        primaryStage.setScene(mainMenu);
-        primaryStage.setFullScreen(true);
-        primaryStage.show();
+
+        mainStage.setScene(mainMenu);
+        mainStage.setFullScreen(true);
+        mainStage.show();
 
 
+    }
+
+    public void gamestart(Stage stage, Scene scene) {
+        stage.setScene(scene) ;
+    }
+
+    public void runOptions(Stage stage, Scene scene) {
+        stage.setScene(scene) ;
     }
 
     public static void main(String[] args) {
