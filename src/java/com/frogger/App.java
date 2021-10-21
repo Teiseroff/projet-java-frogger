@@ -16,6 +16,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color ;
 
+import java.io.InputStream;
+
 
 public class App extends Application {
 
@@ -60,8 +62,11 @@ public class App extends Application {
         stage.setTitle("Crazy Frog");
         stage.setScene(titleMenu);
 
-        //Image window_icon = new Image("Users/hendr/Desktop/COURS/S3/JAVA/projet-java-frogger/src/resources/assets/shrek.png") ;
-        //stage.getIcons().add(window_icon) ;
+        InputStream get_shrek = App.class.getResourceAsStream("/assets/shrek.png");
+
+
+        Image window_icon = new Image(get_shrek) ;
+        stage.getIcons().add(window_icon) ;
         stage.show();
 
         //Image billard = new Image("") ;
