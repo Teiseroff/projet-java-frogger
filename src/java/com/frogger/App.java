@@ -16,12 +16,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color ;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-
 
 public class App extends Application {
 
@@ -41,10 +35,10 @@ public class App extends Application {
         Text crazyfrog_title = new Text();
         crazyfrog_title.setText("CRAZY FROG");
 
-        crazyfrog_title.setX(50) ;
-        crazyfrog_title.setY(50) ;
-        start_btn.setLayoutX(70);
-        start_btn.setLayoutY(50);
+        crazyfrog_title.setX(250) ;
+        crazyfrog_title.setY(200) ;
+        start_btn.setLayoutX(250);
+        start_btn.setLayoutY(400);
 
         root.getChildren().add(start_btn) ;
         root.getChildren().add(crazyfrog_title);
@@ -60,7 +54,7 @@ public class App extends Application {
 //        menuGrid.add(btn, 0, 1);
 //        btn.getStylesheets().add("mainstyle.css") ;
 
-        Scene titleMenu = new Scene(root, 500, 400, Color.LIGHTSKYBLUE) ;
+        Scene titleMenu = new Scene(root, 600, 500, Color.LIGHTSKYBLUE) ;
         Stage stage = new Stage() ;
 
         stage.setTitle("Crazy Frog");
@@ -86,8 +80,8 @@ public class App extends Application {
         Button gamestart_btn = new Button() ;
         gamestart_btn.setText("GAME START");
         root_mainMenu.getChildren().add(gamestart_btn) ;
-        gamestart_btn.setLayoutX(0);
-        gamestart_btn.setLayoutY(50);
+        gamestart_btn.setLayoutX(900);
+        gamestart_btn.setLayoutY(650);
         gamestart_btn.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event){gamestart(mainStage, game_scene) ;
@@ -99,8 +93,8 @@ public class App extends Application {
         Button options_button = new Button() ;
         options_button.setText("OPTIONS");
         root_mainMenu.getChildren().add(options_button) ;
-        options_button.setLayoutX(0);
-        options_button.setLayoutY(-50);
+        options_button.setLayoutX(900);
+        options_button.setLayoutY(800);
         options_button.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event){
@@ -119,10 +113,14 @@ public class App extends Application {
 
     public void gamestart(Stage stage, Scene scene) {
         stage.setScene(scene) ;
+        stage.setFullScreen(true);
+        stage.show();
     }
 
     public void runOptions(Stage stage, Scene scene) {
         stage.setScene(scene) ;
+        stage.setFullScreen(true);
+        stage.show();
     }
 
 
