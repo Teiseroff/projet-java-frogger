@@ -12,7 +12,9 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color ;
 
@@ -36,11 +38,13 @@ public class App extends Application {
 
         Text crazyfrog_title = new Text();
         crazyfrog_title.setText("CRAZY FROG");
+        crazyfrog_title.setFont(Font.font ("Eras Bold ITC", 70));
+        crazyfrog_title.applyCss();
 
-        crazyfrog_title.setX(250) ;
+        crazyfrog_title.setX(75) ;
         crazyfrog_title.setY(200) ;
-        start_btn.setLayoutX(250);
-        start_btn.setLayoutY(400);
+        start_btn.setLayoutX(275) ;
+        start_btn.setLayoutY(260) ;
 
         root.getChildren().add(start_btn) ;
         root.getChildren().add(crazyfrog_title);
@@ -62,15 +66,10 @@ public class App extends Application {
         stage.setTitle("Crazy Frog");
         stage.setScene(titleMenu);
 
-        InputStream get_shrek = App.class.getResourceAsStream("/assets/shrek.png");
-
-
-        Image window_icon = new Image(get_shrek) ;
+        InputStream get_crazyFrog_icon = App.class.getResourceAsStream("/assets/Crazy_Frog.png");
+        Image window_icon = new Image(get_crazyFrog_icon) ;
         stage.getIcons().add(window_icon) ;
         stage.show();
-
-        //Image billard = new Image("") ;
-
     }
 
     public void mainstart() {
