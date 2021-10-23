@@ -3,12 +3,12 @@ package com.frogger.components;
 import java.util.ArrayList;
 
 public class Plateau {
-    public static float x_taille_case = 1;
-    public static float y_taille_case ;
-    public static float x_plateau = 8;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
-    public static float y_plateau = 10 ; // tailles du plateau
-    public ArrayList <Voie> voies = new ArrayList <Voie> () ;
-    public static float eps = 0.1f; // à modifier pour l'IHM
+    private static float x_taille_case = 1;
+    private static float y_taille_case ;
+    private static int x_plateau = 8;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
+    private static int y_plateau = 10 ; // tailles du plateau
+     ArrayList <Voie> voies = new ArrayList <Voie> () ;
+    private static float eps = 0.1f; // à modifier pour l'IHM
     public Grenouille froggy;
     public int nb_voie ;
 
@@ -22,5 +22,41 @@ public class Plateau {
         }
 
         this.froggy = new Grenouille(0,0);
+    }
+
+    public static float getX_taille_case() {
+        return x_taille_case;
+    }
+
+    public static float getY_taille_case() {
+        return y_taille_case;
+    }
+
+    public static int getX_plateau() {
+        return x_plateau;
+    }
+
+    public static int getY_plateau() {
+        return y_plateau;
+    }
+
+    public static void setX_taille_case(float x_taille_case) {
+        Plateau.x_taille_case = x_taille_case;
+    }
+
+    public static void setY_taille_case(float y_taille_case) {
+        Plateau.y_taille_case = y_taille_case;
+    }
+
+    public static void setX_plateau(int x_plateau) {
+        Plateau.x_plateau = x_plateau;
+    }
+
+    public static void setY_plateau(int y_plateau) {
+        Plateau.y_plateau = y_plateau;
+    }
+
+    public static float getEps() {
+        return eps;
     }
 }

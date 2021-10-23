@@ -16,10 +16,10 @@ public class Grenouille {
     // TODO insérer la photo ici je crois, ou pas jcp
 
     public Grenouille ( float b, float g) {   // on instancie la grenouille en entrant ses cooordonnées de gauche et du bas de départ. Celles du haut et de droite sont déduites par translation de la taille d'une case (x_taille_case et y_taille_case))
-        this.b = b + Plateau.eps;    // on rajoute le eps pour ne pas remplir pile la case et avoir des pb de collisions avec les voies voisines
-        this.g = g + Plateau.eps; // TODO i dont know why, i dont want to know why, i shouldnt have to wonder why
-        this.h = b + Plateau.y_taille_case - Plateau.eps;
-        this.d = g + Plateau.x_taille_case - Plateau.eps;
+        this.b = b + Plateau.getEps();    // on rajoute le eps pour ne pas remplir pile la case et avoir des pb de collisions avec les voies voisines
+        this.g = g + Plateau.getEps(); // TODO i dont know why, i dont want to know why, i shouldnt have to wonder why
+        this.h = b + Plateau.getY_taille_case() - Plateau.getEps();
+        this.d = g + Plateau.getX_taille_case() - Plateau.getEps();
         this.bord_b = true;  // à sa création, la grenouille est placée en bas au centre du jeu (donc seulement proche du bord bas)
         this.bord_g = false ;
         this.bord_d = false;
@@ -33,25 +33,25 @@ public class Grenouille {
 
         // Mettre à jour la position de la grenouille dans l'IHM
 
-        if (h == Plateau.y_plateau - Plateau.eps){ // si la grenouille est arrivée en haut du parcours
+        if (h == Plateau.getY_plateau() - Plateau.getEps()){ // si la grenouille est arrivée en haut du parcours
             Partie.You_Win = true;  // c'est gagné //TODO ca marchera jamais !!
         }
         else {
             Partie.You_Win = false;
         }
-        if (b == + Plateau.eps){  // si la grenouille est tout en bas du parcours
+        if (b == + Plateau.getEps()){  // si la grenouille est tout en bas du parcours
             bord_b = true; // elle ne pourra pas reculer au prochain mouvement
         }
         else {
            bord_b = false;
         }
-        if (g == Plateau.eps){
+        if (g == Plateau.getEps()){
             bord_g = true;
         }
         else {
             bord_g = false;
         }
-        if (d == Plateau.x_plateau - Plateau.eps){
+        if (d == Plateau.getX_plateau() - Plateau.getEps()){
             bord_d = true;
         }
         else {
