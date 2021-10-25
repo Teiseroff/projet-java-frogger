@@ -11,12 +11,13 @@ public class Voie {
     public ArrayList <Voiture> voitures = new ArrayList <Voiture> ();
     private ArrayList <Box> boxes = new ArrayList<>() ;
 
-    public Voie () {
+    public Voie (int voie_id) {
         sens = (int)(Math.random() -1);
         v = sens* 20* Math.random(); // TODO adapter le 20 à la situation
         frequence = Math.random();
         this.voitures = new ArrayList <> (10);
         this.boxes = boxes ;
+        this.voie_id = voie_id ;
     }
 
     public int getSens() {
@@ -80,6 +81,37 @@ public class Voie {
                 voie.boxes.add(boxtoadd) ;
             }
         }
+    }
+
+
+    //Ok la je tente un truc pour faire marcher : je definis direct la liste des voies
+
+    ArrayList <Voie> test_plateau = new ArrayList<>() ;
+
+    public ArrayList test_getVoies() {
+        Voie voie_herbe1 = new Voie(0) ;
+        Voie voie_route1 = new Voie(1) ;
+        Voie voie_route2 = new Voie(1) ;
+        Voie voie_route3 = new Voie(1) ;
+        Voie voie_route4 = new Voie(1) ;
+        Voie voie_herbe2 = new Voie(0) ;
+        Voie voie_route5 = new Voie(1) ;
+        Voie voie_route6 = new Voie(1) ;
+        Voie voie_route7 = new Voie(1) ;
+        Voie voie_herbe3 = new Voie(0) ;
+
+        test_plateau.add(voie_herbe1) ;
+        test_plateau.add(voie_route1) ;
+        test_plateau.add(voie_route1) ;
+        test_plateau.add(voie_route1) ;
+        test_plateau.add(voie_route1) ;
+        test_plateau.add(voie_herbe1) ;
+        test_plateau.add(voie_route1) ;
+        test_plateau.add(voie_route1) ;
+        test_plateau.add(voie_route1) ;
+        test_plateau.add(voie_herbe1) ;
+
+        return test_plateau ;
     }
 
 
