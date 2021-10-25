@@ -20,6 +20,7 @@ import javafx.scene.paint.Color ;
 
 import com.frogger.gamelogic.Partie;
 
+import java.awt.event.KeyEvent;
 import java.io.InputStream;
 
 
@@ -72,6 +73,10 @@ public class App extends Application {
 //        InputStream get_crazyFrog_icon = App.class.getResourceAsStream("/assets/Crazy_Frog.png");
 //        Image window_icon = new Image(get_crazyFrog_icon) ;
 //        stage.getIcons().add(window_icon) ;
+
+       // InputStream get_shrek = App.class.getResourceAsStream("/assets/shrek.png");
+        //Image la_grenouille = new Image(get_shrek) ;
+
           stage.show();
     }
 
@@ -125,7 +130,8 @@ public class App extends Application {
 
         Partie partie = new Partie(8);
         partie.jeu();
-//          TitreKeyListener tkl = new TitreKeyListener();
+    //    TitreKeyListener tkl = new TitreKeyListener();
+       // scene.getOnKeyPressed();
 
         stage.show();
     }
