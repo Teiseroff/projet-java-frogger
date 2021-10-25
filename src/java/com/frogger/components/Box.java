@@ -1,6 +1,9 @@
 package com.frogger.components;
 
-public abstract class Box implements IBox {
+public class Box {
+    // Je voulais faire public class Box implement Ibox {} mais ca a pas l'air de marcher
+    // soit je met Box en abstract et il veut plus l'instancier, soit il veut pas implementer Ibox
+
     private int xbox ;
     private int ybox ;
     private int box_id ;

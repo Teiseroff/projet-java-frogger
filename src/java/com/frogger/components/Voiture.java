@@ -13,7 +13,7 @@ public class Voiture {
             d_voiture = g_voiture+ taille_voiture;
         }
         else {
-            d_voiture = Plateau.x_plateau;
+            d_voiture = Plateau.getX_plateau();
             g_voiture = d_voiture- taille_voiture;
         }
     }
@@ -25,7 +25,7 @@ public class Voiture {
     }
 
     public boolean proche_bord (){  // détecte si la voiture est sortie de la voie
-        if (g_voiture > Plateau.x_plateau && vitesse_voiture > 0){
+        if (g_voiture > Plateau.getX_plateau() && vitesse_voiture > 0){
             return true;
         }
         if (d_voiture < 0 && vitesse_voiture < 0){  // 0 pour abscisses des x, mais suivant l'ihm ça va peut être changer
