@@ -7,7 +7,7 @@ public class Plateau {
     private static float y_taille_case ;
     private static int x_plateau = 8;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
     private static int y_plateau = 10 ; // tailles du plateau
-     ArrayList <Voie> voies = new ArrayList <Voie> () ;
+    private ArrayList <Voie> voies = new ArrayList <Voie> () ;
     private static float eps = 0.1f; // à modifier pour l'IHM
     public Grenouille froggy;
     public int nb_voie ;
@@ -58,5 +58,9 @@ public class Plateau {
 
     public static float getEps() {
         return eps;
+    }
+
+    public ArrayList<Voie> getVoies() {
+        return voies;
     }
 }

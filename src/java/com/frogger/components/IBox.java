@@ -1,5 +1,7 @@
 package com.frogger.components;
 
 public interface IBox {
-    public void
+    // test pour avoir des methodes communes à toutes les box
+    public void methode_box1() ;
+
 }

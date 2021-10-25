@@ -59,7 +59,7 @@ public class Partie {
 //        //}
 //        // mettre à jour la scène
 
-        for (Voie voie : plateau.voies) {
+        for (Voie voie : plateau.getVoies()) {
             for (Voiture voiture : voie.voitures) {
                 if (plateau.froggy.collision(voiture)) {
                     //timer.stop();
@@ -117,19 +117,19 @@ public class Partie {
         switch (code) {
             case (KeyEvent.VK_DOWN):        // quand le code correspond à celui de la fleche basse non numerique
                 if (!(You_Win || You_Loose)) {
-                    plateau.froggy.deplacement(0, -plateau.y_taille_case);
+                    plateau.froggy.deplacement(0, -plateau.getY_taille_case());
                 }
             case (KeyEvent.VK_UP):
                 if (!(You_Win || You_Loose)) {
-                    plateau.froggy.deplacement(0, plateau.y_taille_case);
+                    plateau.froggy.deplacement(0, plateau.getY_taille_case());
                 }
             case (KeyEvent.VK_LEFT):
                 if (!(You_Win || You_Loose)) {
-                    plateau.froggy.deplacement( -plateau.x_taille_case, 0);
+                    plateau.froggy.deplacement( -plateau.getX_taille_case(), 0);
                 }
             case (KeyEvent.VK_RIGHT):
                 if (!(You_Win || You_Loose)) {
-                    plateau.froggy.deplacement(plateau.x_taille_case, 0);
+                    plateau.froggy.deplacement(plateau.getX_taille_case(), 0);
                 }
 
         }
@@ -140,7 +140,7 @@ public class Partie {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (!(You_Win)) {
-                for (Voie voie : plateau.voies) {
+                for (Voie voie : plateau.getVoies()) {
                     for (Voiture voiture : voie.voitures) {
                         if (voiture.proche_bord()) {
                             // voie.remove(voiture);
@@ -148,7 +148,7 @@ public class Partie {
                     }
                 }
 
-                for (Voie voie : plateau.voies) {
+                for (Voie voie : plateau.getVoies()) {
                     for (Voiture voiture : voie.voitures) {
                         if (plateau.froggy.collision(voiture)) {
                             //timer.stop();
@@ -157,7 +157,7 @@ public class Partie {
                     }
                 }
 
-                for (Voie voie : plateau.voies) {
+                for (Voie voie : plateau.getVoies()) {
                     for (Voiture voiture : voie.voitures) {
                         voiture.deplacement_voiture();
                     }
