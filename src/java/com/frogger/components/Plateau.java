@@ -1,5 +1,6 @@
 package com.frogger.components;
 
+import java.lang.Integer;
 import java.util.ArrayList;
 
 public class Plateau {
@@ -13,12 +14,13 @@ public class Plateau {
     public int nb_voie ;
 
     public Plateau (int nb_voies){
-        this.nb_voie = nb_voies;
-        this.y_taille_case = this.y_plateau / nb_voies; // on détermine la hauteur de chaque voie
-        this.eps = x_taille_case/8;
-        this.voies = new ArrayList <> (nb_voies);
+        this.nb_voie = nb_voies;   // TODO attention là on se met dans le cas ou y'a pas de défilement et on va juste en haut de l'image de l'écran
+        y_taille_case = (float) y_plateau / (float) nb_voies; // on détermine la hauteur de chaque voie
+        eps = x_taille_case/8;
+        voies = new ArrayList <> (nb_voies);
         for (int i =0; i < nb_voies; i++) {
-            this.voies.set(i, new Voie());
+            Voie v = new Voie();
+            voies.add(v);
         }
 
         this.froggy = new Grenouille(0,0);
@@ -28,9 +30,7 @@ public class Plateau {
         return x_taille_case;
     }
 
-    public static float getY_taille_case() {
-        return y_taille_case;
-    }
+    public static float getY_taille_case() {  return y_taille_case; }
 
     public static int getX_plateau() {
         return x_plateau;

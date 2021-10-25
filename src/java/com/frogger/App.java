@@ -18,6 +18,8 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color ;
 
+import com.frogger.gamelogic.Partie;
+
 import java.io.InputStream;
 
 
@@ -25,6 +27,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         Group root = new Group() ;
 
         Button start_btn = new Button() ;
@@ -66,10 +69,10 @@ public class App extends Application {
         stage.setTitle("Crazy Frog");
         stage.setScene(titleMenu);
 
-        InputStream get_crazyFrog_icon = App.class.getResourceAsStream("/assets/Crazy_Frog.png");
-        Image window_icon = new Image(get_crazyFrog_icon) ;
-        stage.getIcons().add(window_icon) ;
-        stage.show();
+//        InputStream get_crazyFrog_icon = App.class.getResourceAsStream("/assets/Crazy_Frog.png");
+//        Image window_icon = new Image(get_crazyFrog_icon) ;
+//        stage.getIcons().add(window_icon) ;
+//        stage.show();
     }
 
     public void mainstart() {
@@ -88,7 +91,8 @@ public class App extends Application {
         gamestart_btn.setLayoutY(650);
         gamestart_btn.setOnAction(new EventHandler<ActionEvent>(){
             @Override
-            public void handle(ActionEvent event){gamestart(mainStage, game_scene) ;
+            public void handle(ActionEvent event){
+                gamestart(mainStage, game_scene) ;
             }
         });
 
@@ -118,6 +122,10 @@ public class App extends Application {
     public void gamestart(Stage stage, Scene scene) {
         stage.setScene(scene) ;
         stage.setFullScreen(true);
+
+//        Partie partie = new Partie(8);
+//        partie.jeu();
+
         stage.show();
     }
 

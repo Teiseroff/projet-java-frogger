@@ -20,15 +20,15 @@ public class Voiture {
 
     public void deplacement_voiture (){
         g_voiture += vitesse_voiture * 0.1;  // dt par développement limité
-        d_voiture += vitesse_voiture * 0.1;
+        d_voiture += vitesse_voiture * 0.1;  // TODO adapter le 0.1 à la situation
 
     }
 
     public boolean proche_bord (){  // détecte si la voiture est sortie de la voie
-        if (g_voiture > Plateau.getX_plateau() && vitesse_voiture > 0){
+        if (g_voiture >= Plateau.getX_plateau() && vitesse_voiture > 0){
             return true;
         }
-        if (d_voiture < 0 && vitesse_voiture < 0){  // 0 pour abscisses des x, mais suivant l'ihm ça va peut être changer
+        if (d_voiture <= 0 && vitesse_voiture < 0){  // 0 pour abscisses des x, mais suivant l'ihm ça va peut être changer
             return true;
         }
         return false;

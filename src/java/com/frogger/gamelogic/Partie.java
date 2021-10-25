@@ -31,7 +31,7 @@ public class Partie {
     public Plateau plateau;   // une partie contient un plateau
 
     public Partie(int nb_voie) {   // on entre le nombre de voies que l'on souhaite avoir à parcourir
-        You_Win = false;
+        You_Win = false;           // TODO dans le cas d'un jeu non infini
         You_Loose = false;
         plateau = new Plateau(nb_voie);
     }
@@ -39,6 +39,7 @@ public class Partie {
     public void jeu() {                                     // ce qu'on lancera dans le main
         // lorsque le bouton démarré est pressé : // TODO gestion d'appui sur le bouton démarrer
         // timer.start (60)  --> toutes les 60 ms, la fonction timer_0 est appelée
+        TitreKeyListener tkl = new TitreKeyListener();
         Timer tt = new Timer(1000, taskPerformer);
         tt.start();
 
@@ -59,15 +60,10 @@ public class Partie {
 //        //}
 //        // mettre à jour la scène
 
-        for (Voie voie : plateau.getVoies()) {
-            for (Voiture voiture : voie.voitures) {
-                if (plateau.froggy.collision(voiture)) {
-                    //timer.stop();
-                    You_Loose = true;
-                }
-            }
+        if (You_Win || You_Loose) {
+            tt.stop();  // on a arrête le timer
         }
-        tt.stop();  // le timer est arreté :
+
 
         // if (You_Loose == true) {
         // TODO afficher la scène de défaite
@@ -77,7 +73,7 @@ public class Partie {
     }
 
 
-//    public void timer_0() {
+    //    public void timer_0() {
 //        if (!You_Win) {
 //
 //            for (Voie voie : plateau.voies) {
@@ -110,30 +106,43 @@ public class Partie {
 //    }
 //
 //
-//        KeyListener listener = new EventListener() {
-//            @Override
-    public void keyPressed(KeyEvent e) {
-        int code=e.getKeyCode();
-        switch (code) {
-            case (KeyEvent.VK_DOWN):        // quand le code correspond à celui de la fleche basse non numerique
-                if (!(You_Win || You_Loose)) {
-                    plateau.froggy.deplacement(0, -plateau.getY_taille_case());
-                }
-            case (KeyEvent.VK_UP):
-                if (!(You_Win || You_Loose)) {
-                    plateau.froggy.deplacement(0, plateau.getY_taille_case());
-                }
-            case (KeyEvent.VK_LEFT):
-                if (!(You_Win || You_Loose)) {
-                    plateau.froggy.deplacement( -plateau.getX_taille_case(), 0);
-                }
-            case (KeyEvent.VK_RIGHT):
-                if (!(You_Win || You_Loose)) {
-                    plateau.froggy.deplacement(plateau.getX_taille_case(), 0);
-                }
+    // Press p = new Press (keyPressed)
+    //ActionListener listener = new ActionListener() {
+        //@Override
+        public void keyPressed(KeyEvent e) {
+            int code = e.getKeyCode();
+            switch (code) {
+                case (KeyEvent.VK_DOWN):        // quand le code correspond à celui de la fleche basse non numerique
+                    if (!(You_Win || You_Loose)) {
+                        plateau.froggy.deplacement(0, -Plateau.getY_taille_case());
+                        System.out.print("bas");
+                    }
+                case (KeyEvent.VK_UP):
+                    if (!(You_Win || You_Loose)) {
+                        plateau.froggy.deplacement(0, Plateau.getY_taille_case());
+                        System.out.print("haut");
+                    }
+                case (KeyEvent.VK_LEFT):
+                    if (!(You_Win || You_Loose)) {
+                        plateau.froggy.deplacement(-Plateau.getX_taille_case(), 0);
+                        System.out.print("gauche");
+                    }
+                case (KeyEvent.VK_RIGHT):
+                    if (!(You_Win || You_Loose)) {
+                        plateau.froggy.deplacement(Plateau.getX_taille_case(), 0);
+                        System.out.print("droite");
+                    }
 
-        }
-    }
+            }
+            for (Voie voie : plateau.getVoies()) {
+                for (Voiture voiture : voie.voitures) {
+                    if (plateau.froggy.collision(voiture)) {
+                        //timer.stop();
+                        You_Loose = true;
+                    }
+                }
+            }
+        };
 
 
     ActionListener taskPerformer = new ActionListener() {
@@ -143,7 +152,7 @@ public class Partie {
                 for (Voie voie : plateau.getVoies()) {
                     for (Voiture voiture : voie.voitures) {
                         if (voiture.proche_bord()) {
-                            // voie.remove(voiture);
+                            voie.voitures.remove(voie.voitures.indexOf(voiture));  // TODO peut être plutôt utiliser un dico
                         }
                     }
                 }
@@ -166,9 +175,68 @@ public class Partie {
                 /// TODO update le dessin
             }
             // TODO update le dessin
-            You_Win = true ;
+            You_Win = true;
         }
     };
+
+
+    class TitreKeyListener implements KeyListener {
+
+
+        public TitreKeyListener(JLabel label_) {
+
+        }
+
+        public TitreKeyListener() {
+
+        }
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int code = e.getKeyCode();
+            switch (code) {
+                case (KeyEvent.VK_DOWN):        // quand le code correspond à celui de la fleche basse non numerique
+                    if (!(You_Win || You_Loose)) {
+                        plateau.froggy.deplacement(0, -Plateau.getY_taille_case());
+                        System.out.print("bas");
+                    }
+                case (KeyEvent.VK_UP):
+                    if (!(You_Win || You_Loose)) {
+                        plateau.froggy.deplacement(0, Plateau.getY_taille_case());
+                        System.out.print("haut");
+                    }
+                case (KeyEvent.VK_LEFT):
+                    if (!(You_Win || You_Loose)) {
+                        plateau.froggy.deplacement(-Plateau.getX_taille_case(), 0);
+                        System.out.print("gauche");
+                    }
+                case (KeyEvent.VK_RIGHT):
+                    if (!(You_Win || You_Loose)) {
+                        plateau.froggy.deplacement(Plateau.getX_taille_case(), 0);
+                        System.out.print("droite");
+                    }
+
+            }
+            for (Voie voie : plateau.getVoies()) {
+                for (Voiture voiture : voie.voitures) {
+                    if (plateau.froggy.collision(voiture)) {
+                        //timer.stop();
+                        You_Loose = true;
+                    }
+                }
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
+    }
 
 }
 

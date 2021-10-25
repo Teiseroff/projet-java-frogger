@@ -8,9 +8,7 @@ import java.util.Properties;
 
 public class Grenouille {
 
-
-
-    private float b,h,g,d;  //  coordonée de gauche, droite, haut bas de la grenouille
+    private float b,h,g,d;  //  coordonées de gauche, droite, haut bas de la grenouille
     private boolean bord_b, bord_g, bord_d;  // boolean qui sont à vrai sur la grenouille est au bord du jeu (et ne pourra plus se déplacer du coté de ce bord)
 
     // TODO insérer la photo ici je crois, ou pas jcp
@@ -39,17 +37,20 @@ public class Grenouille {
         else {
             Partie.You_Win = false;
         }
-        if (b == + Plateau.getEps()){  // si la grenouille est tout en bas du parcours
+
+        if (b == Plateau.getEps()){  // si la grenouille est tout en bas du parcours
             bord_b = true; // elle ne pourra pas reculer au prochain mouvement
         }
         else {
            bord_b = false;
         }
+
         if (g == Plateau.getEps()){
             bord_g = true;
         }
         else {
             bord_g = false;
+
         }
         if (d == Plateau.getX_plateau() - Plateau.getEps()){
             bord_d = true;

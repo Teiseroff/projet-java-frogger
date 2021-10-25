@@ -13,7 +13,7 @@ public class Voie {
 
     public Voie () {
         sens = (int)(Math.random() -1);
-        v = sens* 20* Math.random();
+        v = sens* 20* Math.random(); // TODO adapter le 20 à la situation
         frequence = Math.random();
         this.voitures = new ArrayList <> (10);
         this.boxes = boxes ;
