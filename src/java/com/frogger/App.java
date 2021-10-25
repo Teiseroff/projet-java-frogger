@@ -72,7 +72,7 @@ public class App extends Application {
 //        InputStream get_crazyFrog_icon = App.class.getResourceAsStream("/assets/Crazy_Frog.png");
 //        Image window_icon = new Image(get_crazyFrog_icon) ;
 //        stage.getIcons().add(window_icon) ;
-//        stage.show();
+          stage.show();
     }
 
     public void mainstart() {
@@ -123,8 +123,9 @@ public class App extends Application {
         stage.setScene(scene) ;
         stage.setFullScreen(true);
 
-//        Partie partie = new Partie(8);
-//        partie.jeu();
+        Partie partie = new Partie(8);
+        partie.jeu();
+//          TitreKeyListener tkl = new TitreKeyListener();
 
         stage.show();
     }
