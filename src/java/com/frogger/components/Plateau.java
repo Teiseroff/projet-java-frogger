@@ -8,10 +8,12 @@ public class Plateau {
     private static float y_taille_case ;
     private static int x_plateau = 8;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
     private static int y_plateau = 10 ; // tailles du plateau
-    private ArrayList <Voie> voies = new ArrayList <Voie> () ;
+    public int nb_voie ;
+    private ArrayList <Voie> voies = new ArrayList <Voie> (nb_voie) ;
     private static float eps = 0.1f; // à modifier pour l'IHM
     public Grenouille froggy;
-    public int nb_voie ;
+
+
 
     public Plateau (int nb_voies){
         this.nb_voie = nb_voies;   // TODO attention là on se met dans le cas ou y'a pas de défilement et on va juste en haut de l'image de l'écran
@@ -19,7 +21,7 @@ public class Plateau {
         eps = x_taille_case/8;
         voies = new ArrayList <> (nb_voies);
         for (int i =0; i < nb_voies; i++) {
-            Voie v = new Voie();
+            Voie v = new Voie(0);
             voies.add(v);
         }
 
