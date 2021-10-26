@@ -118,12 +118,12 @@ public class Partie {
             switch (code) {
                 case (KeyEvent.VK_DOWN):        // quand le code correspond à celui de la fleche basse non numerique
                     if (!(You_Win || You_Loose)) {
-                        plateau.froggy.deplacement(0, -Plateau.getY_taille_case());
+                        plateau.froggy.deplacement(0, -plateau.getY_taille_case());
                         System.out.print("bas");
                     }
                 case (KeyEvent.VK_UP):
                     if (!(You_Win || You_Loose)) {
-                        plateau.froggy.deplacement(0, Plateau.getY_taille_case());
+                        plateau.froggy.deplacement(0, plateau.getY_taille_case());
                         System.out.print("haut");
                     }
                 case (KeyEvent.VK_LEFT):
@@ -138,6 +138,7 @@ public class Partie {
                     }
 
             }
+            //Grenouille.place_grenouille();
             for (Voie voie : plateau.getVoies()) {
                 for (Voiture voiture : voie.voitures) {
                     if (plateau.froggy.collision(voiture)) {

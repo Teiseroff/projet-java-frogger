@@ -1,6 +1,9 @@
 package com.frogger;
 
+import com.frogger.components.Grenouille;
 import com.frogger.components.Plateau;
+import com.frogger.components.Voie;
+import com.frogger.components.Voiture;
 import javafx.application.Application ;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,6 +34,10 @@ import java.io.InputStream;
 import java.awt.Image;
 import java.awt.Component;
 
+
+import java.util.EventListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class App extends Application {
 
@@ -133,54 +140,92 @@ public class App extends Application {
 
     }
 
-    public int gamestart(Stage stage) {
-        System.out.print (100000 ); //  ça marche ici aussi
+    public void gamestart(Stage stage) {
+        System.out.print(100000); //  ça marche ici aussi
         //stage.setScene(scene) ;
         //stage.setFullScreen(true);
 
-        Partie partie = new Partie(8);
+        Partie partie = new Partie(5);
         //Plateau.draw_plateau() ;
         //partie.jeu();
 
-    //    TitreKeyListener tkl = new TitreKeyListener();
-       // scene.getOnKeyPressed();
-        //
 
-        l_image ();
+        JFrame f = new JFrame("JEUUUU");
+        JPanel panel = new JPanel();
+        //panel.setBounds(0, 0, 1920, 1080);
 
-        return 88888;
+//        try {
+//            panel.setBounds(-300, 0, 1920, 1080);
+//            BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
+//            Image dimg = img.getScaledInstance(20, 30,
+//                    Image.SCALE_SMOOTH);
+//            System.out.print(4321);
+//            JLabel pic = new JLabel(new ImageIcon(dimg));
+//            //pic.setBounds(0, 500, 20, 30);
+//            panel.add(pic);}
+//    catch (IOException ignored) {
+//            JLabel pic = new JLabel();
+//    };
+
+        f.add(panel);
+        f.setSize(1920, 1080);
+        f.setLayout(null);
+        f.setVisible(true);
+        System.out.print (77777);
+
+
+
+        class MyClass  implements KeyListener {
+            public void keyTyped(KeyEvent e) {
+                // Invoked when a key has been typed.
+            }
+
+            public void keyPressed(KeyEvent e) {
+
+                int code = e.getKeyCode();
+                if ((KeyEvent.VK_DOWN == code)&&(!(Partie.You_Win || Partie.You_Loose))) {          // quand le code correspond à celui de la fleche basse non numerique
+                        partie.plateau.froggy.deplacement(0, -partie.plateau.getY_taille_case());
+                        System.out.print(" bas ");
+                    }
+                else if ((KeyEvent.VK_UP == code) && (!(Partie.You_Win || Partie.You_Loose))) {
+                    partie.plateau.froggy.deplacement(0, partie.plateau.getY_taille_case());
+                    System.out.print(" haut ");
+                }
+                else if  ((KeyEvent.VK_LEFT== code) &&(!(Partie.You_Win || Partie.You_Loose))) {
+                        partie.plateau.froggy.deplacement(-Plateau.getX_taille_case(), 0);
+                        System.out.print(" gauche ");
+                    }
+                else if ((KeyEvent.VK_RIGHT == code) && (!(Partie.You_Win || Partie.You_Loose))) {
+                        partie.plateau.froggy.deplacement(Plateau.getX_taille_case(), 0);
+                        System.out.print(" droite ");
+                    };
+
+            // partie.plateau.froggy.place_grenouille( panel );
+            draw_image(f, panel, partie);
+            for (Voie voie : partie.plateau.getVoies()) {
+                for (Voiture voiture : voie.voitures) {
+                    if (partie.plateau.froggy.collision(voiture)) {
+                        //timer.stop();
+                        Partie.You_Loose = true;
+                    }
+                }
+            }
+        };
+
+            public void keyReleased(KeyEvent e) {}
         }
 
-        public void  l_image ( ) {
+        f.addKeyListener(new MyClass());
+
+    };
+
+
+        public void  draw_image (JFrame f, JPanel panel, Partie partie) {
             System.out.print (55555);
+                //f.remove(panel);
+                partie.plateau.froggy.place_grenouille(panel,  Plateau.getX_taille_case(), partie.plateau.getY_taille_case());
+                //place_shrek (panel);
 
-            System.out.print (6666666);
-            JFrame f = new JFrame("JEUUUU");
-            JPanel panel = new JPanel();
-            panel.setBounds(0, 0, 1920, 1080);
-            System.out.print (1234);
-
-                // on place la grenouille
-//                BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
-//                Image dimg = img.getScaledInstance(20, 30,
-//                        Image.SCALE_SMOOTH);
-//                System.out.print (4321);
-//                JLabel pic = new JLabel(new ImageIcon(dimg));
-//                pic.setBounds(200,100, 20,30);
-//                panel.add(pic);
-
-                place_grenouille(panel);
-                place_shrek (panel);
-
-                // on place shrek
-//                BufferedImage img2 = ImageIO.read(new File("C:/Users/Utilisateur/Documents/shrek.png"));
-//                Image dimg2 = img2.getScaledInstance(200, 250,
-//                        Image.SCALE_SMOOTH);
-//                JLabel pic2 = new JLabel(new ImageIcon(dimg2));
-//                pic.setBounds(20,10, 20,30);
-//                panel.add(pic2);
-
-                //panel.setBounds();
                 f.add(panel);
                 f.setSize(1920, 1080);
                 f.setLayout(null);
@@ -188,18 +233,18 @@ public class App extends Application {
                 System.out.print (77777);
 
         }
-    void place_grenouille (JPanel panel) {
-        try {
-        BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
-        Image dimg = img.getScaledInstance(20, 30,
-                Image.SCALE_SMOOTH);
-        System.out.print(4321);
-        JLabel pic = new JLabel(new ImageIcon(dimg));
-        pic.setBounds(200, 100, 20, 30);
-        panel.add(pic);}
-    catch (IOException ignored) {};
-
-    }
+//    void place_grenouille (JPanel panel) {
+//        try {
+//        BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
+//        Image dimg = img.getScaledInstance(20, 30,
+//                Image.SCALE_SMOOTH);
+//        System.out.print(4321);
+//        JLabel pic = new JLabel(new ImageIcon(dimg));
+//        pic.setBounds(200, 100, 20, 30);
+//        panel.add(pic);}
+//
+//    catch (IOException ignored) {};
+//    }
 
     void place_shrek (JPanel panel) {
         try {
@@ -218,6 +263,8 @@ public class App extends Application {
         stage.setFullScreen(true);
         stage.show();
     }
+
+
 
 
 

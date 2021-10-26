@@ -18,10 +18,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Plateau {
-    private static float x_taille_case = 1;
-    private static float y_taille_case ;
-    private static int x_plateau = 8;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
-    private static int y_plateau = 10 ; // tailles du plateau
+    private  static float x_taille_case = 100;
+    private  float y_taille_case ;
+    private static int x_plateau = 800;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
+    private static int y_plateau = 1000 ; // tailles du plateau
     public int nb_voie ;
     private ArrayList <Voie> voies = new ArrayList <Voie> (nb_voie) ;
     private static float eps = 0.1f; // à modifier pour l'IHM
@@ -46,7 +46,7 @@ public class Plateau {
         return x_taille_case;
     }
 
-    public static float getY_taille_case() {  return y_taille_case; }
+    public float getY_taille_case() {  return this.y_taille_case; }
 
     public static int getX_plateau() {
         return x_plateau;
@@ -60,9 +60,9 @@ public class Plateau {
         Plateau.x_taille_case = x_taille_case;
     }
 
-    public static void setY_taille_case(float y_taille_case) {
-        Plateau.y_taille_case = y_taille_case;
-    }
+//    public static void setY_taille_case(float y_taille_case) {
+//        Plateau.y_taille_case = y_taille_case;
+//    }
 
     public static void setX_plateau(int x_plateau) {
         Plateau.x_plateau = x_plateau;
