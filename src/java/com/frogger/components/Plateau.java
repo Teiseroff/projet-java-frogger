@@ -34,7 +34,7 @@ public class Plateau {
         y_taille_case = (float) y_plateau / (float) nb_voies; // on détermine la hauteur de chaque voie
         eps = x_taille_case/8;
         voies = new ArrayList <> (nb_voies -1);
-        for (int i =1; i < nb_voies; i++) {
+        for (int i =2; i < nb_voies +1; i++) {
             Voie v = new Voie(i);
             voies.add(v);
         }

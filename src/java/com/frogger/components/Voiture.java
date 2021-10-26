@@ -13,7 +13,7 @@ public class Voiture {
     float g_voiture, d_voiture;
 
     public Voiture (double v){
-        vitesse_voiture = v;
+        vitesse_voiture = 5*v ;
         taille_voiture =  (int)(3* Math.random() ) +1 ;
         if (v>0){
             g_voiture = 0;
@@ -33,8 +33,8 @@ public class Voiture {
     }
 
     public void deplacement_voiture (){
-        g_voiture += vitesse_voiture * 0.1;  // dt par développement limité
-        d_voiture += vitesse_voiture * 0.1;  // TODO adapter le 0.1 à la situation
+        g_voiture += vitesse_voiture; // * 0.1;  // dt par développement limité
+        d_voiture += vitesse_voiture; // * 0.1;  // TODO adapter le 0.1 à la situation
 
     }
 
