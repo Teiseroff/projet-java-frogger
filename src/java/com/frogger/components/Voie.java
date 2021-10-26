@@ -12,9 +12,9 @@ public class Voie {
     private ArrayList <Box> boxes = new ArrayList<>() ;
 
     public Voie (int voie_id) {
-        sens = (int)(Math.random() -1);
+        sens = (int)(Math.random() + 0.5);
         v = sens* 20* Math.random(); // TODO adapter le 20 à la situation
-        frequence = Math.random();
+        frequence = 1 ; // Math.random();
         this.voitures = new ArrayList <> (10);
         this.boxes = boxes ;
         this.voie_id = voie_id ;

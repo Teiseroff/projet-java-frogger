@@ -41,6 +41,14 @@ public class Grenouille {
         return this.bord_d;
     }
 
+    public float Getg (){
+        return this.g;
+    }
+
+    public float Getb (){
+        return this.b;
+    }
+
     public void deplacement (float dx, float dy){   // on déplace la grenouille de dx vers la droite et de dy vers le haut
         this.g += dx;
        // this.d += dx;
@@ -86,22 +94,25 @@ public class Grenouille {
         return false;
     }
 
-    public void place_grenouille (JPanel panel, float width, float height, float width_ecran, float heigth_ecran) {
+    public void place_grenouille (JPanel panel, JFrame f, float width, float height, float width_ecran, float heigth_ecran) {
         try {
               //panel.removeAll();
               //panel.setBounds(0, 0, 1920, 1080);
               BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
-              Image dimg = img.getScaledInstance((int) width - (int) Plateau.getEps(), (int) height - (int) Plateau.getEps(),
+              Image dimg = img.getScaledInstance((int) width - (int) Plateau.getEps() *2, (int) height - (int) Plateau.getEps() *2,
                     Image.SCALE_SMOOTH);
             System.out.print(4321);
             JLabel pic = new JLabel(new ImageIcon(dimg));
-            System.out.print (this.g);
-            System.out.print ("    ");
-            System.out.print (this.d);
-            panel.setBounds( (int) this.g, (int) heigth_ecran - (int) this.b - (int) height , (int) width - (int) Plateau.getEps(), (int) height - (int) Plateau.getEps());  // pas de pb ici
+//            System.out.print (this.g);
+//            System.out.print ("    ");
+//            System.out.print (this.d);
+            panel.setBounds( (int) this.g, (int) heigth_ecran - (int) this.b - (int) height , (int) width - (int) Plateau.getEps() * 2, (int) height - (int) Plateau.getEps()*2);  // pas de pb ici
             panel.add(pic);}
         catch (IOException ignored) {};
-
+        f.add(panel);
+        f.setSize((int) width_ecran, (int) heigth_ecran);
+        f.setLayout(null);
+        f.setVisible(true);
     }
 
 }

@@ -34,15 +34,15 @@ public class Partie {
         You_Win = false;           // TODO dans le cas d'un jeu non infini
         You_Loose = false;
         plateau = new Plateau(nb_voie);
-        System.out.print (3333);
+        System.out.print (33);
     }
 
     public void jeu() {                                     // ce qu'on lancera dans le main
         // lorsque le bouton démarré est pressé : // TODO gestion d'appui sur le bouton démarrer
         // timer.start (60)  --> toutes les 60 ms, la fonction timer_0 est appelée
         //TitreKeyListener tkl = new TitreKeyListener();
-        Timer tt = new Timer(1000, taskPerformer);
-        tt.start();
+//        Timer tt = new Timer(1000, taskPerformer);
+//        tt.start();
 
 //         while ! (You_Win || You_Loose) {
 //         if keyPressedEvent :
@@ -63,8 +63,8 @@ public class Partie {
 
 
 
-        if (You_Win || You_Loose) {
-            tt.stop();  // on a arrête le timer
+       // if (You_Win || You_Loose) {
+            //tt.stop();  // on a arrête le timer
         }
 
 
@@ -113,76 +113,76 @@ public class Partie {
     //ActionListener listener = new ActionListener() {
         //@Override
 
-        public void keyPressed(KeyEvent e) {
-            int code = e.getKeyCode();
-            switch (code) {
-                case (KeyEvent.VK_DOWN):        // quand le code correspond à celui de la fleche basse non numerique
-                    if (!(You_Win || You_Loose)) {
-                        plateau.froggy.deplacement(0, -plateau.getY_taille_case());
-                        System.out.print("bas");
-                    }
-                case (KeyEvent.VK_UP):
-                    if (!(You_Win || You_Loose)) {
-                        plateau.froggy.deplacement(0, plateau.getY_taille_case());
-                        System.out.print("haut");
-                    }
-                case (KeyEvent.VK_LEFT):
-                    if (!(You_Win || You_Loose)) {
-                        plateau.froggy.deplacement(-Plateau.getX_taille_case(), 0);
-                        System.out.print("gauche");
-                    }
-                case (KeyEvent.VK_RIGHT):
-                    if (!(You_Win || You_Loose)) {
-                        plateau.froggy.deplacement(Plateau.getX_taille_case(), 0);
-                        System.out.print("droite");
-                    }
+//        public void keyPressed(KeyEvent e) {
+//            int code = e.getKeyCode();
+//            switch (code) {
+//                case (KeyEvent.VK_DOWN):        // quand le code correspond à celui de la fleche basse non numerique
+//                    if (!(You_Win || You_Loose)) {
+//                        plateau.froggy.deplacement(0, -plateau.getY_taille_case());
+//                        System.out.print("bas");
+//                    }
+//                case (KeyEvent.VK_UP):
+//                    if (!(You_Win || You_Loose)) {
+//                        plateau.froggy.deplacement(0, plateau.getY_taille_case());
+//                        System.out.print("haut");
+//                    }
+//                case (KeyEvent.VK_LEFT):
+//                    if (!(You_Win || You_Loose)) {
+//                        plateau.froggy.deplacement(-Plateau.getX_taille_case(), 0);
+//                        System.out.print("gauche");
+//                    }
+//                case (KeyEvent.VK_RIGHT):
+//                    if (!(You_Win || You_Loose)) {
+//                        plateau.froggy.deplacement(Plateau.getX_taille_case(), 0);
+//                        System.out.print("droite");
+//                    }
+//
+//            }
+//            //Grenouille.place_grenouille();
+//            for (Voie voie : plateau.getVoies()) {
+//                for (Voiture voiture : voie.voitures) {
+//                    if (plateau.froggy.collision(voiture)) {
+//                        //timer.stop();
+//                        You_Loose = true;
+//                    }
+//                }
+//            }
+//        };
 
-            }
-            //Grenouille.place_grenouille();
-            for (Voie voie : plateau.getVoies()) {
-                for (Voiture voiture : voie.voitures) {
-                    if (plateau.froggy.collision(voiture)) {
-                        //timer.stop();
-                        You_Loose = true;
-                    }
-                }
-            }
-        };
 
-
-    ActionListener taskPerformer = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (!(You_Win)) {
-                for (Voie voie : plateau.getVoies()) {
-                    for (Voiture voiture : voie.voitures) {
-                        if (voiture.proche_bord()) {
-                            voie.voitures.remove(voie.voitures.indexOf(voiture));  // TODO peut être plutôt utiliser un dico
-                        }
-                    }
-                }
-
-                for (Voie voie : plateau.getVoies()) {
-                    for (Voiture voiture : voie.voitures) {
-                        if (plateau.froggy.collision(voiture)) {
-                            //timer.stop();
-                            You_Loose = true;
-                        }
-                    }
-                }
-
-                for (Voie voie : plateau.getVoies()) {
-                    for (Voiture voiture : voie.voitures) {
-                        voiture.deplacement_voiture();
-                    }
-                }
-
-                /// TODO update le dessin
-            }
-            // TODO update le dessin
-            You_Win = true;
-        }
-    };
+//    ActionListener taskPerformer = new ActionListener() {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            if (!(You_Win)) {
+//                for (Voie voie : plateau.getVoies()) {
+//                    for (Voiture voiture : voie.voitures) {
+//                        if (voiture.proche_bord()) {
+//                            voie.voitures.remove(voie.voitures.indexOf(voiture));  // TODO peut être plutôt utiliser un dico
+//                        }
+//                    }
+//                }
+//
+//                for (Voie voie : plateau.getVoies()) {
+//                    for (Voiture voiture : voie.voitures) {
+//                        if (plateau.froggy.collision(voiture)) {
+//                            //timer.stop();
+//                            You_Loose = true;
+//                        }
+//                    }
+//                }
+//
+//                for (Voie voie : plateau.getVoies()) {
+//                    for (Voiture voiture : voie.voitures) {
+//                        voiture.deplacement_voiture();
+//                    }
+//                }
+//
+//                /// TODO update le dessin
+//            }
+//            // TODO update le dessin
+//            You_Win = true;
+//        }
+//    };
 
 
 //    class TitreKeyListener implements KeyListener {
@@ -242,6 +242,4 @@ public class Partie {
 //
 //        }
 //    }
-
-}
 

@@ -26,6 +26,7 @@ import com.frogger.gamelogic.Partie;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -108,9 +109,9 @@ public class App extends Application {
         int width_ecran  = (int)dimension.getWidth();
 
         System.out.print (width_ecran);
-        System.out.print ("   ");
+        System.out.print (" ");
         System.out.print (height_ecran);
-        System.out.print ("       ");
+        System.out.print ("   ");
 
 
         Button gamestart_btn = new Button() ;
@@ -152,7 +153,7 @@ public class App extends Application {
     }
 
     public void gamestart(Stage stage, float width_ecran, float height_ecran) {
-        System.out.print(100000); //  ça marche ici aussi
+//        System.out.print(10); //  ça marche ici aussi
         //stage.setScene(scene) ;
         //stage.setFullScreen(true);
 
@@ -163,6 +164,7 @@ public class App extends Application {
 
         JFrame f = new JFrame("JEUUUU");
         JPanel panel = new JPanel();
+        //JPanel panel2 = new JPanel();
         //panel.setBounds(0, 0, 1920, 1080);
 
 //        try {
@@ -179,11 +181,14 @@ public class App extends Application {
 //    };
 
         f.add(panel);
+        //f.add(panel2);
+        //draw_voitures(f, partie, width_ecran, height_ecran);
         f.setSize((int) width_ecran + 20, (int) height_ecran + 20);
         f.setLayout(null);
         f.setVisible(true);
-        System.out.print (77777);
-
+        System.out.print ("  ");
+        System.out.print (777);
+        System.out.print ("  ");
 
 
         class MyClass  implements KeyListener {
@@ -227,25 +232,134 @@ public class App extends Application {
         }
 
         f.addKeyListener(new MyClass());
+       // draw_voitures(f, partie, width_ecran, height_ecran);
+//        System.out.print ("PREMIERE PHASE");
+//        for (Voie voie : partie.plateau.getVoies()) {
+//        voie.nouvelle_voiture ();}
 
-    };
+       // System.out.print ("DEUXIEME PHASE");
 
+
+        // draw_voitures(f, partie, width_ecran, height_ecran);
+
+        ActionListener taskPerformer = new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                System.out.print ("  le timer a biiiiiiiiiiiiiiiien fonctionné !!!  ");
+                if (!(Partie.You_Win)) {
+                    for (Voie voie : partie.plateau.getVoies()) {
+                        for (Voiture voiture : voie.voitures) {
+
+                            if (partie.plateau.froggy.collision(voiture)) {
+                                Partie.You_Loose = true;
+                                break;
+                            }
+
+                            if (voiture.proche_bord()) {
+                                voie.voitures.remove(voie.voitures.indexOf(voiture));  // TODO peut être plutôt utiliser un dico
+                            }
+
+
+                        }
+                    }
+
+                    for (Voie voie : partie.plateau.getVoies()) {
+                        for (Voiture voiture : voie.voitures) {
+                            voiture.deplacement_voiture();
+                        }
+                    }
+
+                    for (Voie voie : partie.plateau.getVoies()) {
+                            voie.nouvelle_voiture();
+
+                    }
+
+                    /// TODO update le dessin
+                    draw_voitures(f, partie, width_ecran, height_ecran);
+                }
+                // TODO update le dessin
+                Partie.You_Win = true;
+            }
+        };
+
+
+//        final Timer tt = new Timer(10000, taskPerformer);
+//        tt.start();
+//
+//        while (!(Partie.You_Win || Partie.You_Loose)) {
+//        }
+//        tt.stop();  // on a arrête le timer
+//        if (Partie.You_Win) {
+//            System.out.print ("gagnééé");
+//        }
+//        else {
+//            System.out.print ("perduuu");
+//        }
+
+};
 
         public void  draw_image (JFrame f, JPanel panel, Partie partie, float width_ecran, float height_ecran) {
-            System.out.print (55555);
-                //f.remove(panel);
-                partie.plateau.froggy.place_grenouille(panel,  Plateau.getX_taille_case(), partie.plateau.getY_taille_case(), width_ecran, height_ecran);
-                //place_shrek (panel);
+            System.out.print (55);
+            System.out.print (" ");
+               // partie.plateau.froggy.place_grenouille(panel, f,  Plateau.getX_taille_case(), partie.plateau.getY_taille_case(), width_ecran, height_ecran);
 
-
-
-                f.add(panel);
-                f.setSize((int) width_ecran, (int) height_ecran);
-                f.setLayout(null);
-                f.setVisible(true);
-                System.out.print (77777);
-
+            try {
+                //panel.setBounds(0, 0, 1920, 1080);
+                BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
+                Image dimg = img.getScaledInstance((int)  Plateau.getX_taille_case() - (int) Plateau.getEps() *2, (int)partie.plateau.getY_taille_case()  - (int) Plateau.getEps() *2,
+                        Image.SCALE_SMOOTH);
+                System.out.print(4321);
+                JLabel pic = new JLabel(new ImageIcon(dimg));
+//            System.out.print (this.g);
+//            System.out.print ("  ");
+//            System.out.print (this.d);
+                panel.setBounds( (int) partie.plateau.froggy.Getg(), (int) height_ecran - (int) partie.plateau.froggy.Getb()- (int) partie.plateau.getY_taille_case() , (int) Plateau.getX_taille_case() - (int) Plateau.getEps() * 2, (int) partie.plateau.getY_taille_case() - (int) Plateau.getEps()*2);  // pas de pb ici
+                panel.add(pic);}
+            catch (IOException ignored) {};
+            f.add(panel);
+            f.setSize((int) width_ecran, (int) height_ecran);
+            f.setLayout(null);
+            f.setVisible(true);
         }
+
+
+    public void  draw_voitures (JFrame f, Partie partie, float width_ecran, float height_ecran) {
+        System.out.print (" lalalala ");
+        for (Voie voie : partie.plateau.getVoies()) {
+            for (Voiture voiture : voie.voitures) {
+                try {
+                    JPanel panel2 = new JPanel();
+                    System.out.print ("  1   ");
+                    BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/flash_gauche.jfif"));
+                    System.out.print ("  2   ");
+                    Image dimg = img.getScaledInstance((int) Plateau.getX_taille_case() * voiture.GetTailleVoit()  - (int) Plateau.getEps() * 2, (int) partie.plateau.getY_taille_case() - (int) Plateau.getEps() * 2,
+                            Image.SCALE_SMOOTH);
+                    System.out.print("   3  ");
+                    JLabel pic = new JLabel(new ImageIcon(dimg));
+
+                    System.out.print (voiture.getG_voiture());
+                    panel2.setBounds( (int) voiture.getG_voiture(), (int) height_ecran - (int) voie.getVoie_id() *  (int)  partie.plateau.getY_taille_case(), (int) Plateau.getX_taille_case() * voiture.GetTailleVoit() - (int) Plateau.getEps() * 2, (int) partie.plateau.getY_taille_case() - (int) Plateau.getEps() * 2);  // pas de pb ici
+                    panel2.add(pic);
+                    System.out.print ("  4   ");
+                    f.add(panel2);
+                }
+                catch (IOException ignored) {};
+
+                System.out.print ("  5  ");
+                }
+            }
+
+        f.setSize((int) width_ecran, (int) height_ecran);
+        f.setLayout(null);
+        f.setVisible(true);
+        System.out.print ("  6  ");
+
+//        f.setSize((int) width_ecran, (int) height_ecran);
+//        f.setLayout(null);
+//        f.setVisible(true);
+
+    }
+
 //    void place_grenouille (JPanel panel) {
 //        try {
 //        BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
