@@ -44,7 +44,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        final int i = 0;
         Group root = new Group() ;
 
         Button start_btn = new Button() ;
@@ -153,12 +152,6 @@ public class App extends Application {
     }
 
     public void gamestart(Stage stage, float width_ecran, float height_ecran) {
-        final int[] i = {0};
-        JPanel panel2 = new JPanel();
-        JPanel panel3= new JPanel();
-        final JPanel[] val= {new JPanel()};
-        final JPanel[] labels_panels = {panel2, panel3};
-
 
 //        System.out.print(10); //  ça marche ici aussi
         //stage.setScene(scene) ;
@@ -206,21 +199,21 @@ public class App extends Application {
                 int code = e.getKeyCode();
                 if ((KeyEvent.VK_DOWN == code)){ //&&(!(partie.plateau.froggy.GetBordB() || Partie.You_Win ))) {          // quand le code correspond à celui de la fleche basse non numerique
                         partie.plateau.froggy.deplacement(0, -partie.plateau.getY_taille_case());
-                        System.out.print(" bas ");
+                        //System.out.print(" bas ");
                     }
                 else if ((KeyEvent.VK_UP == code)){ // && (!( Partie.You_Win ))) {
                     partie.plateau.froggy.deplacement(0, partie.plateau.getY_taille_case());
-                    System.out.print(" haut ");
+                    //System.out.print(" haut ");
                 }
 
                 /// quand je laissais le Partie.You_Win, avec le mauvais calibrage ça arrêtait tout dès l'instant qu'on avait une voiture
                 else if  ((KeyEvent.VK_LEFT== code)) { // &&(!( partie.plateau.froggy.GetBordG() || Partie.You_Win ))) {
                         partie.plateau.froggy.deplacement(-Plateau.getX_taille_case(), 0);
-                        System.out.print(" gauche ");
+                       // System.out.print(" gauche ");
                     }
                 else if ((KeyEvent.VK_RIGHT == code)){ //&& (!(partie.plateau.froggy.GetBordD() || Partie.You_Win ))) {
                         partie.plateau.froggy.deplacement(Plateau.getX_taille_case(), 0);
-                        System.out.print(" droite ");
+                        //System.out.print(" droite ");
                     };
 
             // partie.plateau.froggy.place_grenouille( panel );
@@ -247,17 +240,13 @@ public class App extends Application {
 //        voie.nouvelle_voiture ();}
 
 //        System.out.print ("DEUXIEME PHASE");
-        val[0] = draw_voitures(f, partie, width_ecran, height_ecran, i[0],labels_panels );
-        labels_panels[i[0] %2 ] = val[0];
-        i[0] += 1;
+        draw_voitures(f, partie, width_ecran, height_ecran);
 //      f.addKeyListener(new MyClass());
 
         ActionListener taskPerformer = new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                val[0] = draw_voitures(f, partie, width_ecran, height_ecran, i[0],labels_panels);
-                labels_panels[i[0] %2 ] = val[0];
-                i[0] += 1;
+                //draw_voitures(f, partie, width_ecran, height_ecran);
                 //System.out.print ("  le timer a biiiiiiiiiiiiiiiien fonctionné !!!  ");
              //   if (!(Partie.You_Win)) {
 
@@ -276,29 +265,22 @@ public class App extends Application {
                         for (Voiture voiture : voie.voitures) {
                             voiture.deplacement_voiture();
                         }
-                        val[0] = draw_voitures(f, partie, width_ecran, height_ecran, i[0],labels_panels);
-                        labels_panels[i[0] %2 ] = val[0];
-                        i[0] += 1;
+                        draw_voitures(f, partie, width_ecran, height_ecran);
                     }
 
                     for (Voie voie : partie.plateau.getVoies()) {
                             voie.nouvelle_voiture();
                     }
 
-                    val[0] = draw_voitures(f, partie, width_ecran, height_ecran, i[0],labels_panels); /// TODO update le dessin
-                    labels_panels[i[0] %2 ] = val[0];
-                    i[0] += 1;
+                    draw_voitures(f, partie, width_ecran, height_ecran); /// TODO update le dessin
              //   }
                 // TODO update le dessin
                 Partie.You_Win = true;
-                val[0] = draw_voitures(f, partie, width_ecran, height_ecran, i[0],labels_panels);
-                labels_panels[i[0] %2 ] = val[0];
-                i[0] += 1;
             }
         };
 
 
-        final Timer tt = new Timer(1000, taskPerformer);
+        final Timer tt = new Timer(100, taskPerformer);
         tt.start();
 
 //        while (!(Partie.You_Win || Partie.You_Loose)) {
@@ -315,7 +297,7 @@ public class App extends Application {
 
         public void  draw_image (JFrame f, JPanel panel, Partie partie, float width_ecran, float height_ecran) {
             // System.out.print (55);
-            System.out.print (" ");
+           // System.out.print (" ");
                // partie.plateau.froggy.place_grenouille(panel, f,  Plateau.getX_taille_case(), partie.plateau.getY_taille_case(), width_ecran, height_ecran);
             try {
                 //panel.setBounds(0, 0, 1920, 1080);
@@ -337,12 +319,11 @@ public class App extends Application {
         }
 
 
-    public JPanel  draw_voitures (JFrame f, Partie partie, float width_ecran, float height_ecran, int i, JPanel[] labels_panels) {
+    public void  draw_voitures (JFrame f, Partie partie, float width_ecran, float height_ecran) {
         //System.out.print (" lalalala ");
-        {
-             labels_panels[i %2 ] = new JPanel();
+        JPanel panel2 = new JPanel();
         for (Voie voie : partie.plateau.getVoies()) {
-            //panel2 = new JPanel();
+//            panel2 = new JPanel();
             for (Voiture voiture : voie.voitures) {
                 try {
                     BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/flash_gauche.jfif"));
@@ -350,24 +331,28 @@ public class App extends Application {
                             Image.SCALE_SMOOTH);
                     JLabel pic = new JLabel(new ImageIcon(dimg));
                     //System.out.print (voiture.getG_voiture());
-                    labels_panels[i %2 ].setBounds((int) voiture.getG_voiture(), (int) height_ecran - (int) voie.getVoie_id() * (int) partie.plateau.getY_taille_case(), (int) Plateau.getX_taille_case() * voiture.GetTailleVoit() - (int) Plateau.getEps() * 2, (int) partie.plateau.getY_taille_case() - (int) Plateau.getEps() * 2);  // pas de pb ici
-                    labels_panels[i %2 ].add(pic);
+                    panel2.setBounds((int) voiture.getG_voiture(), (int) height_ecran - (int) voie.getVoie_id() * (int) partie.plateau.getY_taille_case(), (int) Plateau.getX_taille_case() * voiture.GetTailleVoit() - (int) Plateau.getEps() * 2, (int) partie.plateau.getY_taille_case() - (int) Plateau.getEps() * 2);  // pas de pb ici
+                    panel2.add(pic);
 //                    f.add(panel2);
 //                    f.setSize((int) width_ecran, (int) height_ecran);
 //                    f.setLayout(null);
 //                    f.setVisible(true);
                 } catch (IOException ignored) {};
             }
-        }
-            f.remove( labels_panels[(i+1) %2 ]);
             //f.add(panel2);  // jcp trop pk mais le truc d'en dessous marche mieux
-            f.getContentPane().add( labels_panels[i %2 ]);
-            f.setSize((int) width_ecran, (int) height_ecran);
-            f.setLayout(null);
-            f.setVisible(true);
+//            f.getContentPane().add(panel2);
+//            f.setSize((int) width_ecran, (int) height_ecran);
+//            f.setLayout(null);
+//            f.setVisible(true);
+
+        }
+
+        f.getContentPane().add(panel2);
+        f.setSize((int) width_ecran, (int) height_ecran);
+        f.setLayout(null);
+        f.setVisible(true);
             }
-            return labels_panels[i %2 ];
-    }
+
 
 //    void place_grenouille (JPanel panel) {
 //        try {
