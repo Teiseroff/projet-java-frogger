@@ -1,6 +1,15 @@
 package com.frogger.components;
 
-import java.lang.Integer;
+import com.frogger.App;
+import javafx.application.Application ;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Plateau {
@@ -64,5 +73,15 @@ public class Plateau {
 
     public ArrayList<Voie> getVoies() {
         return voies;
+    }
+
+    public static void draw_plateau() {
+        Group root_plateau = new Group() ;
+        InputStream getAsset_box0 = App.class.getResourceAsStream("/assets/shrek.png");
+        Image box0_asset = new Image(getAsset_box0) ;
+        GridPane grid_plateau = new GridPane() ;
+
+        grid_plateau.add(box0_asset,);
+
     }
 }
