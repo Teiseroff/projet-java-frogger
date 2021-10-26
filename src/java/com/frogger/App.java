@@ -79,8 +79,8 @@ public class App extends Application {
         stage.setScene(titleMenu);
 
         InputStream get_crazyFrog_icon = App.class.getResourceAsStream("/assets/Crazy_Frog.png");
-        Image window_icon = new Image(get_crazyFrog_icon) ;
-        stage.getIcons().add(window_icon) ;
+//        Image window_icon = new Image(get_crazyFrog_icon) ;
+//        stage.getIcons().add(window_icon) ;
         stage.show();
     }
 
@@ -91,7 +91,10 @@ public class App extends Application {
         Scene mainMenu = new Scene(root_mainMenu, 1920, 1080, Color.BLACK) ;
         Stage mainStage = new Stage() ;
 
-        Scene game_scene = new Scene(root_game, 1920, 1080, Color.GREEN) ;
+
+        // On gère ce qu'il va se passer lorsqu'on va appuyer sur le bouton game start
+        Scene game_scene = new Scene(root_game, 1920, 1080); // ,Color.GREEN) ;
+
 
         Button gamestart_btn = new Button() ;
         gamestart_btn.setText("GAME START");
@@ -102,8 +105,11 @@ public class App extends Application {
             @Override
             public void handle(ActionEvent event){
                 gamestart(mainStage, game_scene) ;
+                System.out.print (12121);    // jusqu'ici ça marche
             }
         });
+
+        // On gère ce qu'il va se passer lorsqu'on va appuyer sur le bouton options
 
         Scene options_scene = new Scene(root_options,1920,1080, Color.GREY) ;
 
@@ -120,7 +126,6 @@ public class App extends Application {
         });
 
 
-
         mainStage.setScene(mainMenu);
         mainStage.setFullScreen(true);
         mainStage.show();
@@ -128,19 +133,51 @@ public class App extends Application {
 
     }
 
-    public void gamestart(Stage stage, Scene scene,Group root ) {
+    public int gamestart(Stage stage, Scene scene ) {
+        System.out.print (100000 ); //  ça marche ici aussi
         stage.setScene(scene) ;
         stage.setFullScreen(true);
 
         Partie partie = new Partie(8);
-        Plateau.draw_plateau() ;
-        partie.jeu();
+        //Plateau.draw_plateau() ;
+        //partie.jeu();
+
     //    TitreKeyListener tkl = new TitreKeyListener();
        // scene.getOnKeyPressed();
         //
-        Image img = Toolkit.getDefaultToolkit().getImage("/assets/shrek.png");
-        // root.getChildren().add(img);
+
+        l_image (scene);
+
+        return 88888;
         }
+
+        public void  l_image ( Scene scene) {
+            System.out.print (55555);
+            try
+            {
+                System.out.print (6666666);
+                JFrame f = new JFrame("Ajouter une image dans JPanel");
+                JPanel panel = new JPanel();
+                panel.setBounds(0, 0, 1920, 1080);
+                System.out.print (1234);
+                BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
+                //Image dimg = img.getScaledInstance(20, 30,
+                //        Image.SCALE_SMOOTH);
+                System.out.print (4321);
+                JLabel pic = new JLabel(new ImageIcon(img));
+                pic.setBounds(200,100, 20,30);
+                panel.add(pic);
+                //panel.setBounds();
+                f.add(panel);
+                f.setSize(1920, 1080);
+                f.setLayout(null);
+                f.setVisible(true);
+                System.out.print (77777);
+            }
+            catch (IOException ignored) {};
+
+        }
+
 
     public void runOptions(Stage stage, Scene scene) {
         stage.setScene(scene);

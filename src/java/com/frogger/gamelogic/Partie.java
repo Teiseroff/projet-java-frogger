@@ -34,6 +34,7 @@ public class Partie {
         You_Win = false;           // TODO dans le cas d'un jeu non infini
         You_Loose = false;
         plateau = new Plateau(nb_voie);
+        System.out.print (3333);
     }
 
     public void jeu() {                                     // ce qu'on lancera dans le main

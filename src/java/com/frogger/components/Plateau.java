@@ -9,6 +9,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -77,11 +82,28 @@ public class Plateau {
 
     public static void draw_plateau() {
         Group root_plateau = new Group() ;
-        InputStream getAsset_box0 = App.class.getResourceAsStream("/assets/shrek.png");
-        Image box0_asset = new Image(getAsset_box0) ;
-        GridPane grid_plateau = new GridPane() ;
+//        InputStream getAsset_box0 = App.class.getResourceAsStream("/assets/shrek.png");
+//        Image box0_asset = new Image(getAsset_box0) ;
+//        GridPane grid_plateau = new GridPane() ;
 
-        grid_plateau.add(box0_asset,);
+        //JLabel pic = new JLabel(new ImageIcon(box0_asset ));
+        //grid_plateau.add(box0_asset);
+
+        try
+        {
+            JFrame f = new JFrame("Ajouter une image dans JPanel");
+            JPanel panel = new JPanel();
+            panel.setBounds(50, 50, 250, 250);
+            BufferedImage img = ImageIO.read(new File("/assets/shrek.png"));
+            JLabel pic = new JLabel(new ImageIcon(img));
+            panel.add(pic);
+            f.add(panel);
+            f.setSize(400, 400);
+            f.setLayout(null);
+            f.setVisible(true);
+        }
+        catch (IOException e) {}
+    }
 
     }
-}
+
