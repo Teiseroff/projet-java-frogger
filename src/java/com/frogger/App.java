@@ -9,7 +9,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
@@ -20,8 +19,16 @@ import javafx.scene.paint.Color ;
 
 import com.frogger.gamelogic.Partie;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.awt.Image;
+import java.awt.Component;
 
 
 public class App extends Application {
@@ -74,9 +81,9 @@ public class App extends Application {
 //        Image window_icon = new Image(get_crazyFrog_icon) ;
 //        stage.getIcons().add(window_icon) ;
 
-       // InputStream get_shrek = App.class.getResourceAsStream("/assets/shrek.png");
-        //Image la_grenouille = new Image(get_shrek) ;
-
+        
+        // Image img = Toolkit.getDefaultToolkit().getImage("fichierImage");
+        //g.drawImage(img, xtop,ytop,width,height, myPanel);
           stage.show();
     }
 
@@ -124,7 +131,7 @@ public class App extends Application {
 
     }
 
-    public void gamestart(Stage stage, Scene scene) {
+    public void gamestart(Stage stage, Scene scene,Group root ) {
         stage.setScene(scene) ;
         stage.setFullScreen(true);
 
@@ -132,12 +139,13 @@ public class App extends Application {
         partie.jeu();
     //    TitreKeyListener tkl = new TitreKeyListener();
        // scene.getOnKeyPressed();
-
-        stage.show();
-    }
+        //
+        Image img = Toolkit.getDefaultToolkit().getImage("/assets/shrek.png");
+        // root.getChildren().add(img);
+        }
 
     public void runOptions(Stage stage, Scene scene) {
-        stage.setScene(scene) ;
+        stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
     }
