@@ -93,7 +93,7 @@ public class App extends Application {
 
 
         // On gère ce qu'il va se passer lorsqu'on va appuyer sur le bouton game start
-        Scene game_scene = new Scene(root_game, 1920, 1080); // ,Color.GREEN) ;
+        //Scene game_scene = new Scene(root_game, 1920, 1080); // ,Color.GREEN) ;
 
 
         Button gamestart_btn = new Button() ;
@@ -104,7 +104,7 @@ public class App extends Application {
         gamestart_btn.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event){
-                gamestart(mainStage, game_scene) ;
+                gamestart(mainStage) ;
                 System.out.print (12121);    // jusqu'ici ça marche
             }
         });
@@ -133,10 +133,10 @@ public class App extends Application {
 
     }
 
-    public int gamestart(Stage stage, Scene scene ) {
+    public int gamestart(Stage stage) {
         System.out.print (100000 ); //  ça marche ici aussi
-        stage.setScene(scene) ;
-        stage.setFullScreen(true);
+        //stage.setScene(scene) ;
+        //stage.setFullScreen(true);
 
         Partie partie = new Partie(8);
         //Plateau.draw_plateau() ;
@@ -146,37 +146,71 @@ public class App extends Application {
        // scene.getOnKeyPressed();
         //
 
-        l_image (scene);
+        l_image ();
 
         return 88888;
         }
 
-        public void  l_image ( Scene scene) {
+        public void  l_image ( ) {
             System.out.print (55555);
-            try
-            {
-                System.out.print (6666666);
-                JFrame f = new JFrame("Ajouter une image dans JPanel");
-                JPanel panel = new JPanel();
-                panel.setBounds(0, 0, 1920, 1080);
-                System.out.print (1234);
-                BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
-                //Image dimg = img.getScaledInstance(20, 30,
-                //        Image.SCALE_SMOOTH);
-                System.out.print (4321);
-                JLabel pic = new JLabel(new ImageIcon(img));
-                pic.setBounds(200,100, 20,30);
-                panel.add(pic);
+
+            System.out.print (6666666);
+            JFrame f = new JFrame("JEUUUU");
+            JPanel panel = new JPanel();
+            panel.setBounds(0, 0, 1920, 1080);
+            System.out.print (1234);
+
+                // on place la grenouille
+//                BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
+//                Image dimg = img.getScaledInstance(20, 30,
+//                        Image.SCALE_SMOOTH);
+//                System.out.print (4321);
+//                JLabel pic = new JLabel(new ImageIcon(dimg));
+//                pic.setBounds(200,100, 20,30);
+//                panel.add(pic);
+
+                place_grenouille(panel);
+                place_shrek (panel);
+
+                // on place shrek
+//                BufferedImage img2 = ImageIO.read(new File("C:/Users/Utilisateur/Documents/shrek.png"));
+//                Image dimg2 = img2.getScaledInstance(200, 250,
+//                        Image.SCALE_SMOOTH);
+//                JLabel pic2 = new JLabel(new ImageIcon(dimg2));
+//                pic.setBounds(20,10, 20,30);
+//                panel.add(pic2);
+
                 //panel.setBounds();
                 f.add(panel);
                 f.setSize(1920, 1080);
                 f.setLayout(null);
                 f.setVisible(true);
                 System.out.print (77777);
-            }
-            catch (IOException ignored) {};
 
         }
+    void place_grenouille (JPanel panel) {
+        try {
+        BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
+        Image dimg = img.getScaledInstance(20, 30,
+                Image.SCALE_SMOOTH);
+        System.out.print(4321);
+        JLabel pic = new JLabel(new ImageIcon(dimg));
+        pic.setBounds(200, 100, 20, 30);
+        panel.add(pic);}
+    catch (IOException ignored) {};
+
+    }
+
+    void place_shrek (JPanel panel) {
+        try {
+        BufferedImage img2 = ImageIO.read(new File("C:/Users/Utilisateur/Documents/shrek.png"));
+        Image dimg2 = img2.getScaledInstance(200, 250,
+                Image.SCALE_SMOOTH);
+        JLabel pic2 = new JLabel(new ImageIcon(dimg2));
+        pic2.setBounds(20,10, 20,30);
+        panel.add(pic2);}
+        catch (IOException ignored) {};
+    }
 
 
     public void runOptions(Stage stage, Scene scene) {
