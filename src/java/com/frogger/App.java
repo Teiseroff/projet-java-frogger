@@ -103,6 +103,16 @@ public class App extends Application {
         //Scene game_scene = new Scene(root_game, 1920, 1080); // ,Color.GREEN) ;
 
 
+        Dimension dimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int height_ecran = (int)dimension.getHeight();
+        int width_ecran  = (int)dimension.getWidth();
+
+        System.out.print (width_ecran);
+        System.out.print ("   ");
+        System.out.print (height_ecran);
+        System.out.print ("       ");
+
+
         Button gamestart_btn = new Button() ;
         gamestart_btn.setText("GAME START");
         root_mainMenu.getChildren().add(gamestart_btn) ;
@@ -111,14 +121,15 @@ public class App extends Application {
         gamestart_btn.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event){
-                gamestart(mainStage) ;
+                gamestart(mainStage, width_ecran, height_ecran) ;
                 System.out.print (12121);    // jusqu'ici ça marche
             }
         });
 
         // On gère ce qu'il va se passer lorsqu'on va appuyer sur le bouton options
 
-        Scene options_scene = new Scene(root_options,1920,1080, Color.GREY) ;
+
+        Scene options_scene = new Scene(root_options,width_ecran,height_ecran, Color.GREY) ;
 
         Button options_button = new Button() ;
         options_button.setText("OPTIONS");
@@ -140,12 +151,12 @@ public class App extends Application {
 
     }
 
-    public void gamestart(Stage stage) {
+    public void gamestart(Stage stage, float width_ecran, float height_ecran) {
         System.out.print(100000); //  ça marche ici aussi
         //stage.setScene(scene) ;
         //stage.setFullScreen(true);
 
-        Partie partie = new Partie(5);
+        Partie partie = new Partie(8);
         //Plateau.draw_plateau() ;
         //partie.jeu();
 
@@ -168,7 +179,7 @@ public class App extends Application {
 //    };
 
         f.add(panel);
-        f.setSize(1920, 1080);
+        f.setSize((int) width_ecran + 20, (int) height_ecran + 20);
         f.setLayout(null);
         f.setVisible(true);
         System.out.print (77777);
@@ -183,25 +194,25 @@ public class App extends Application {
             public void keyPressed(KeyEvent e) {
 
                 int code = e.getKeyCode();
-                if ((KeyEvent.VK_DOWN == code)&&(!(Partie.You_Win || Partie.You_Loose))) {          // quand le code correspond à celui de la fleche basse non numerique
+                if ((KeyEvent.VK_DOWN == code)&&(!(partie.plateau.froggy.GetBordB() || Partie.You_Win || Partie.You_Loose))) {          // quand le code correspond à celui de la fleche basse non numerique
                         partie.plateau.froggy.deplacement(0, -partie.plateau.getY_taille_case());
                         System.out.print(" bas ");
                     }
-                else if ((KeyEvent.VK_UP == code) && (!(Partie.You_Win || Partie.You_Loose))) {
+                else if ((KeyEvent.VK_UP == code) && (!( Partie.You_Win || Partie.You_Loose))) {
                     partie.plateau.froggy.deplacement(0, partie.plateau.getY_taille_case());
                     System.out.print(" haut ");
                 }
-                else if  ((KeyEvent.VK_LEFT== code) &&(!(Partie.You_Win || Partie.You_Loose))) {
+                else if  ((KeyEvent.VK_LEFT== code) &&(!( partie.plateau.froggy.GetBordG() || Partie.You_Win || Partie.You_Loose))) {
                         partie.plateau.froggy.deplacement(-Plateau.getX_taille_case(), 0);
                         System.out.print(" gauche ");
                     }
-                else if ((KeyEvent.VK_RIGHT == code) && (!(Partie.You_Win || Partie.You_Loose))) {
+                else if ((KeyEvent.VK_RIGHT == code) && (!(partie.plateau.froggy.GetBordD() || Partie.You_Win || Partie.You_Loose))) {
                         partie.plateau.froggy.deplacement(Plateau.getX_taille_case(), 0);
                         System.out.print(" droite ");
                     };
 
             // partie.plateau.froggy.place_grenouille( panel );
-            draw_image(f, panel, partie);
+            draw_image(f, panel, partie, width_ecran, height_ecran);
             for (Voie voie : partie.plateau.getVoies()) {
                 for (Voiture voiture : voie.voitures) {
                     if (partie.plateau.froggy.collision(voiture)) {
@@ -220,14 +231,16 @@ public class App extends Application {
     };
 
 
-        public void  draw_image (JFrame f, JPanel panel, Partie partie) {
+        public void  draw_image (JFrame f, JPanel panel, Partie partie, float width_ecran, float height_ecran) {
             System.out.print (55555);
                 //f.remove(panel);
-                partie.plateau.froggy.place_grenouille(panel,  Plateau.getX_taille_case(), partie.plateau.getY_taille_case());
+                partie.plateau.froggy.place_grenouille(panel,  Plateau.getX_taille_case(), partie.plateau.getY_taille_case(), width_ecran, height_ecran);
                 //place_shrek (panel);
 
+
+
                 f.add(panel);
-                f.setSize(1920, 1080);
+                f.setSize((int) width_ecran, (int) height_ecran);
                 f.setLayout(null);
                 f.setVisible(true);
                 System.out.print (77777);

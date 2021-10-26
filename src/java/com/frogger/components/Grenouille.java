@@ -29,6 +29,18 @@ public class Grenouille {
         this.bord_d = false;
     }
 
+    public boolean GetBordB (){
+        return this.bord_b;
+    }
+
+    public boolean GetBordG (){
+        return this.bord_g;
+    }
+
+    public boolean GetBordD (){
+        return this.bord_d;
+    }
+
     public void deplacement (float dx, float dy){   // on déplace la grenouille de dx vers la droite et de dy vers le haut
         this.g += dx;
        // this.d += dx;
@@ -44,21 +56,21 @@ public class Grenouille {
             Partie.You_Win = false;
         }
 
-        if (b == Plateau.getEps()){  // si la grenouille est tout en bas du parcours
+        if (b <= Plateau.getEps()){  // si la grenouille est tout en bas du parcours
             bord_b = true; // elle ne pourra pas reculer au prochain mouvement
         }
         else {
            bord_b = false;
         }
 
-        if (g == Plateau.getEps()){
+        if (g <= Plateau.getEps()){
             bord_g = true;
         }
         else {
             bord_g = false;
 
         }
-        if (d == Plateau.getX_plateau() - Plateau.getEps()){
+        if (g >= Plateau.getX_plateau() - 3* Plateau.getEps() - Plateau.getX_taille_case()){
             bord_d = true;
         }
         else {
@@ -74,19 +86,19 @@ public class Grenouille {
         return false;
     }
 
-    public void place_grenouille (JPanel panel, float width, float height) {
+    public void place_grenouille (JPanel panel, float width, float height, float width_ecran, float heigth_ecran) {
         try {
               //panel.removeAll();
               //panel.setBounds(0, 0, 1920, 1080);
               BufferedImage img = ImageIO.read(new File("C:/Users/Utilisateur/Documents/Crazy_Frog.png"));
-              Image dimg = img.getScaledInstance((int) width, (int) height,
+              Image dimg = img.getScaledInstance((int) width - (int) Plateau.getEps(), (int) height - (int) Plateau.getEps(),
                     Image.SCALE_SMOOTH);
             System.out.print(4321);
             JLabel pic = new JLabel(new ImageIcon(dimg));
             System.out.print (this.g);
             System.out.print ("    ");
             System.out.print (this.d);
-            panel.setBounds((int) this.g, (int) this.b, (int) width, (int) height);  // pas de pb ici
+            panel.setBounds( (int) this.g, (int) heigth_ecran - (int) this.b - (int) height , (int) width - (int) Plateau.getEps(), (int) height - (int) Plateau.getEps());  // pas de pb ici
             panel.add(pic);}
         catch (IOException ignored) {};
 

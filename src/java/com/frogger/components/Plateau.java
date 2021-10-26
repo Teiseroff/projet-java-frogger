@@ -20,11 +20,11 @@ import java.util.ArrayList;
 public class Plateau {
     private  static float x_taille_case = 100;
     private  float y_taille_case ;
-    private static int x_plateau = 800;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
-    private static int y_plateau = 1000 ; // tailles du plateau
+    private static int x_plateau = 1536;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
+    private static int y_plateau = 864 ; // tailles du plateau
     public int nb_voie ;
     private ArrayList <Voie> voies = new ArrayList <Voie> (nb_voie) ;
-    private static float eps = 0.1f; // à modifier pour l'IHM
+    private static float eps = x_plateau/x_taille_case; // à modifier pour l'IHM
     public Grenouille froggy;
 
 
