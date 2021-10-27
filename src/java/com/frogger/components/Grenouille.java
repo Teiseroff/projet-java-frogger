@@ -14,17 +14,22 @@ import java.util.Properties;
 
 public class Grenouille {
 
-    private float b,h,g,d;  //  coordonées de gauche, droite, haut bas de la grenouille
-    private boolean bord_b, bord_g, bord_d;  // boolean qui sont à vrai sur la grenouille est au bord du jeu (et ne pourra plus se déplacer du coté de ce bord)
+    private float b,h,g,d;  //  la grenouille, considérée comme un rectangle, est repérée par ses coordonées: en bas, en haut, à droite et à gauche
+    private boolean bord_b, bord_g, bord_d;  // booléens qui sont vrais si la grenouille touche un des bords du plateau de jeu
+    // (et ne pourra plus se déplacer du coté de ce bord)
+    // il n'y a pas de bord_h car celui-ci correspond à la victoire du joueur (la grenouille a atteint l'arrivée)
 
     // TODO insérer la photo ici je crois, ou pas jcp
 
-    public Grenouille ( float b, float g) {   // on instancie la grenouille en entrant ses cooordonnées de gauche et du bas de départ. Celles du haut et de droite sont déduites par translation de la taille d'une case (x_taille_case et y_taille_case))
-        this.b = b + Plateau.getEps();    // on rajoute le eps pour ne pas remplir pile la case et avoir des pb de collisions avec les voies voisines
+    public Grenouille ( float b, float g) {   // on instancie la grenouille en entrant ses cooordonnées de départ à gauche et en bas.
+        // Celles en haut et à droite sont déduites par translation de la taille d'une case (x_taille_case et y_taille_case))
+        this.b = b + Plateau.getEps();    // on rajoute une petite quantité eps pour ne pas remplir exactement la case
+        // On s'assure ainsi de ne pas avoir de problèmes de collisions avec les voies voisines
         this.g = g + Plateau.getEps(); // TODO i dont know why, i dont want to know why, i shouldnt have to wonder why
-        //this.h = b + Plateau.getY_taille_case() - Plateau.getEps();
-       // this.d = g + Plateau.getX_taille_case() - Plateau.getEps();
-        this.bord_b = true;  // à sa création, la grenouille est placée en bas au centre du jeu (donc seulement proche du bord bas)
+        this.h = b + Plateau.getY_taille_case() - Plateau.getEps();
+        this.d = g + Plateau.getX_taille_case() - Plateau.getEps();
+        this.bord_b = true;  // à sa création, la grenouille est placée en bas au centre du plateau de jeu
+        // (donc seulement proche du bord bas)
         this.bord_g = false ;
         this.bord_d = false;
     }
@@ -51,9 +56,9 @@ public class Grenouille {
 
     public void deplacement (float dx, float dy){   // on déplace la grenouille de dx vers la droite et de dy vers le haut
         this.g += dx;
-       // this.d += dx;
+        this.d += dx;
         this.b += dy;
-       // this.h += dy;
+        this.h += dy;
 
         // Mettre à jour la position de la grenouille dans l'IHM
 
@@ -87,10 +92,12 @@ public class Grenouille {
     }
 
     public boolean collision (Voiture voiture){  // on regarde si la voiture entrée en paramètre intercepte la grenouille
-        if ((voiture.g_voiture <= this.g && this.g <= voiture.d_voiture) || (voiture.g_voiture <= this.d && this.d <= voiture.d_voiture) || (this.g <= voiture.g_voiture && voiture.g_voiture <= this.d)
-                || (this.g <= voiture.d_voiture && voiture.d_voiture <= this.d)){
-            return true;
-    }
+        if (voiture.id_voiture*Plateau.getY_taille_case()==this.h) { // on vérifie que la voiture et la grenouille sont sur la même voie
+//            if ((voiture.g_voiture <= this.g && this.g <= voiture.d_voiture) || (voiture.g_voiture <= this.d && this.d <= voiture.d_voiture) || (this.g <= voiture.g_voiture && voiture.g_voiture <= this.d)
+//                || (this.g <= voiture.d_voiture && voiture.d_voiture <= this.d)){
+            if ((voiture.d_voiture>=this.g && voiture.vitesse_voiture>0)|| (voiture.g_voiture<=this.d && voiture.vitesse_voiture<0)){
+                return true;
+    }}
         return false;
     }
 

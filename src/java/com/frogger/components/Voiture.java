@@ -11,8 +11,10 @@ public class Voiture {
     int taille_voiture;
     double vitesse_voiture;
     float g_voiture, d_voiture;
+    int id_voiture;
 
-    public Voiture (double v){
+    public Voiture (double v, int id){
+        this.id_voiture=id;
         vitesse_voiture = 5*v ;
         taille_voiture =  (int)(3* Math.random() ) +1 ;
         if (v>0){
@@ -32,6 +34,8 @@ public class Voiture {
         return g_voiture;
     }
 
+    public int GetId_voiture(){return id_voiture;}
+
     public void deplacement_voiture (){
         g_voiture += vitesse_voiture; // * 0.1;  // dt par développement limité
         d_voiture += vitesse_voiture; // * 0.1;  // TODO adapter le 0.1 à la situation
@@ -42,7 +46,7 @@ public class Voiture {
         if (g_voiture >= Plateau.getX_plateau() && vitesse_voiture > 0){
             return true;
         }
-        if (d_voiture <= 0 && vitesse_voiture < 0){  // 0 pour abscisses des x, mais suivant l'ihm ça va peut être changer
+        if (d_voiture <= 0 && vitesse_voiture < 0){  // 0 pour abscisses des x, mais suivant l'ihm ça va peut être changé
             return true;
         }
         return false;

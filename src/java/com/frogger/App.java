@@ -269,7 +269,7 @@ public class App extends Application {
                     }
 
                     for (Voie voie : partie.plateau.getVoies()) {
-                            voie.nouvelle_voiture();
+                            voie.nouvelle_voiture(voie.getVoie_id());
                     }
 
                     draw_voitures(f, partie, width_ecran, height_ecran); /// TODO update le dessin

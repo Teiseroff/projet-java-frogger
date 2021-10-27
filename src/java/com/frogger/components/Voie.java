@@ -40,10 +40,10 @@ public class Voie {
         return boxes;
     }
 
-    public void nouvelle_voiture(){
+    public void nouvelle_voiture(int id){
         double r = Math.random ();
         if (r < this.frequence) {
-            voitures.add( new Voiture (v));
+            voitures.add( new Voiture (r,id));
         }
     }
 
