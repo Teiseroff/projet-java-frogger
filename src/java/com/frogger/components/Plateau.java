@@ -31,22 +31,23 @@ public class Plateau {
 
     public Plateau (int nb_voies){
         this.nb_voie = nb_voies;   // TODO attention là on se met dans le cas ou y'a pas de défilement et on va juste en haut de l'image de l'écran
-        y_taille_case = (float) y_plateau / (float) nb_voies; // on détermine la hauteur de chaque voie
-        eps = x_taille_case/8;
+        this.y_taille_case = (float) y_plateau / (float) nb_voies; // on détermine la hauteur de chaque voie
+        eps = x_taille_case/8; // on détermine le pas acceptable pour une bonne approximation
         voies = new ArrayList <> (nb_voies -1);
-        for (int i =2; i < nb_voies +1; i++) {
+        for (int i =2; i < nb_voies +1; i++) { //TODO pourquoi commencer à i=2?
             Voie v = new Voie(i);
             voies.add(v);
         }
 
-        this.froggy = new Grenouille(0,0);
+        this.froggy = new Grenouille(0,0); // placement initial du plateau : la grenouille commence son parcours en bas à gauche
     }
 
     public static float getX_taille_case() {
         return x_taille_case;
     }
 
-    public static float getY_taille_case() {  return y_taille_case; }
+    public static float getY_taille_case() {
+        return y_taille_case;}
 
     public static int getX_plateau() {
         return x_plateau;
@@ -56,21 +57,21 @@ public class Plateau {
         return y_plateau;
     }
 
-    public static void setX_taille_case(float x_taille_case) {
-        Plateau.x_taille_case = x_taille_case;
-    }
+//    public void setX_taille_case(float x_taille_case) {
+//        this.x_taille_case = x_taille_case; //TODO à quoi sert le setter ici? étant donné qu'on ne va pas modifier cette valeur
+//    }
 
 //    public static void setY_taille_case(float y_taille_case) {
 //        Plateau.y_taille_case = y_taille_case;
 //    }
 
-    public static void setX_plateau(int x_plateau) {
-        Plateau.x_plateau = x_plateau;
-    }
-
-    public static void setY_plateau(int y_plateau) {
-        Plateau.y_plateau = y_plateau;
-    }
+//    public static void setX_plateau(int x_plateau) {
+//        Plateau.x_plateau = x_plateau;
+//    }
+//
+//    public static void setY_plateau(int y_plateau) {
+//        Plateau.y_plateau = y_plateau;
+//    }
 
     public static float getEps() {
         return eps;

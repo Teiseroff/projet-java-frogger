@@ -26,8 +26,8 @@ import javax.swing.JPanel;
 // import java.security.KeyStore;
 
 public class Partie {
-    public static boolean You_Win = false;  // Permet de voir quand la partie doit s'arrêter de run, dans la méthode jeu (en dessus)
-    public static boolean You_Loose = false;  // Pareil
+    public static boolean You_Win = false;  // Permet de voir quand la partie doit s'arrêter de run, dans la méthode jeu (en dessous)
+    public static boolean You_Loose = false;  // Idem
     public Plateau plateau;   // une partie contient un plateau
 
     public Partie(int nb_voie) {   // on entre le nombre de voies que l'on souhaite avoir à parcourir
@@ -38,7 +38,7 @@ public class Partie {
     }
 
     public void jeu() {                                     // ce qu'on lancera dans le main
-        // lorsque le bouton démarré est pressé : // TODO gestion d'appui sur le bouton démarrer
+        // lorsque le bouton "Démarrer" est pressé : // TODO gestion d'appui sur le bouton démarrer
         // timer.start (60)  --> toutes les 60 ms, la fonction timer_0 est appelée
         //TitreKeyListener tkl = new TitreKeyListener();
 //        Timer tt = new Timer(1000, taskPerformer);

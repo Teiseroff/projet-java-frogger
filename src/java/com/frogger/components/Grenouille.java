@@ -76,15 +76,15 @@ public class Grenouille {
            bord_b = false;
         }
 
-        if (g <= Plateau.getEps()){
-            bord_g = true;
+        if (g <= Plateau.getEps()){ // si la grenouille arrive au bord gauche du plateau
+            bord_g = true; // elle ne pourra pas de déplacer à gauche au prochain mouvement
         }
         else {
             bord_g = false;
 
         }
-        if (g >= Plateau.getX_plateau() - 3* Plateau.getEps() - Plateau.getX_taille_case()){
-            bord_d = true;
+        if (g >= Plateau.getX_plateau() - Plateau.getX_taille_case() - 3* Plateau.getEps()){ // si la grenouille arrive au bord droit du plateau
+            bord_d = true; // elle ne pourra pas de déplacer à droite au prochain mouvement
         }
         else {
             bord_d = false;
@@ -92,10 +92,10 @@ public class Grenouille {
     }
 
     public boolean collision (Voiture voiture){  // on regarde si la voiture entrée en paramètre intercepte la grenouille
-        if (voiture.id_voiture*Plateau.getY_taille_case()==this.h) { // on vérifie que la voiture et la grenouille sont sur la même voie
+        if (voiture.GetId_voiture()*Plateau.getY_taille_case()==this.h) { // on vérifie que la voiture et la grenouille sont sur la même voie
 //            if ((voiture.g_voiture <= this.g && this.g <= voiture.d_voiture) || (voiture.g_voiture <= this.d && this.d <= voiture.d_voiture) || (this.g <= voiture.g_voiture && voiture.g_voiture <= this.d)
 //                || (this.g <= voiture.d_voiture && voiture.d_voiture <= this.d)){
-            if ((voiture.d_voiture>=this.g && voiture.vitesse_voiture>0)|| (voiture.g_voiture<=this.d && voiture.vitesse_voiture<0)){
+            if ((voiture.getD_voiture()>=this.g && voiture.getVitesse_voiture()>0)|| (voiture.getG_voiture()<=this.d && voiture.getVitesse_voiture()<0)){
                 return true;
     }}
         return false;

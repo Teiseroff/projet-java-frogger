@@ -8,10 +8,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class Voiture {
-    int taille_voiture;
-    double vitesse_voiture;
-    float g_voiture, d_voiture;
-    int id_voiture;
+    private int taille_voiture;
+    private double vitesse_voiture;
+    private float g_voiture, d_voiture;
+    private int id_voiture;
 
     public Voiture (double v, int id){
         this.id_voiture=id;
@@ -34,7 +34,28 @@ public class Voiture {
         return g_voiture;
     }
 
-    public int GetId_voiture(){return id_voiture;}
+    public float getD_voiture() {
+        return d_voiture;
+    }
+
+    public void setG_voiture(float g){
+        this.g_voiture=g;
+    }
+
+    public void setD_voiture(float d){
+        this.d_voiture=d;
+    }
+
+    public double getVitesse_voiture(){
+        return vitesse_voiture;
+    }
+
+    public void setVitesse_voiture(double v){
+        this.vitesse_voiture=v;
+    }
+
+    public int GetId_voiture(){
+        return id_voiture;}
 
     public void deplacement_voiture (){
         g_voiture += vitesse_voiture; // * 0.1;  // dt par développement limité
