@@ -49,6 +49,20 @@ public class Grenouille {
     public float Getg (){
         return this.g;
     }
+    public float Geth (){
+        return this.h;
+    }
+
+    public void Setg (float gg) {
+        this.g = gg + Plateau.getEps();
+        this.d = this.g + Plateau.getX_taille_case() - Plateau.getEps();
+    }
+
+    public void Setb (float bb) {
+        this.b = bb + Plateau.getEps();
+        this.h = this.b + Plateau.getY_taille_case() - Plateau.getEps();
+    }
+
 
     public float Getb (){
         return this.b;

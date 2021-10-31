@@ -13,9 +13,9 @@ public class Voie {
 
     public Voie (int voie_id) {
         sens = (int)(Math.random() + 0.5);
-        v = sens* 20; // TODO adapter le 20 à la situation
+        v = sens* 40; // TODO adapter le 20 à la situation
         frequence = 0.1 ; // Math.random();
-        this.voitures = new ArrayList <> (10);
+        this.voitures = new ArrayList <> ();
         this.boxes = boxes ;
         this.voie_id = voie_id ;
     }
@@ -40,10 +40,10 @@ public class Voie {
         return boxes;
     }
 
-    public void nouvelle_voiture(int id){
+    public void nouvelle_voiture(){
         double r = Math.random ();
         if (r < this.frequence) {
-            voitures.add( new Voiture (r,id));
+            voitures.add( new Voiture (v,this.voie_id));
         }
     }
 

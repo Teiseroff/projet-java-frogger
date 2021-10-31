@@ -35,10 +35,29 @@ import java.io.InputStream;
 import java.awt.Image;
 import java.awt.Component;
 
-
 import java.util.EventListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+
+import javafx.animation.AnimationTimer;
+import javafx.animation.FadeTransition;
+import javafx.application.Application;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class App extends Application {
 
@@ -269,7 +288,7 @@ public class App extends Application {
                     }
 
                     for (Voie voie : partie.plateau.getVoies()) {
-                            voie.nouvelle_voiture(voie.getVoie_id());
+                            voie.nouvelle_voiture();
                     }
 
                     draw_voitures(f, partie, width_ecran, height_ecran); /// TODO update le dessin
@@ -280,7 +299,7 @@ public class App extends Application {
         };
 
 
-        final Timer tt = new Timer(100, taskPerformer);
+        final Timer tt = new Timer(10, taskPerformer);
         tt.start();
 
 //        while (!(Partie.You_Win || Partie.You_Loose)) {
@@ -333,10 +352,10 @@ public class App extends Application {
                     //System.out.print (voiture.getG_voiture());
                     panel2.setBounds((int) voiture.getG_voiture(), (int) height_ecran - (int) voie.getVoie_id() * (int) partie.plateau.getY_taille_case(), (int) Plateau.getX_taille_case() * voiture.GetTailleVoit() - (int) Plateau.getEps() * 2, (int) partie.plateau.getY_taille_case() - (int) Plateau.getEps() * 2);  // pas de pb ici
                     panel2.add(pic);
-//                    f.add(panel2);
-//                    f.setSize((int) width_ecran, (int) height_ecran);
-//                    f.setLayout(null);
-//                    f.setVisible(true);
+                    f.getContentPane().add(panel2);f.add(panel2);
+                    f.setSize((int) width_ecran, (int) height_ecran);
+                    f.setLayout(null);
+                    f.setVisible(true);
                 } catch (IOException ignored) {};
             }
             //f.add(panel2);  // jcp trop pk mais le truc d'en dessous marche mieux

@@ -20,8 +20,8 @@ import java.util.ArrayList;
 public class Plateau {
     private  static float x_taille_case = 100;
     private  static float y_taille_case ;
-    private static int x_plateau = 1536;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
-    private static int y_plateau = 864 ; // tailles du plateau
+    private static int x_plateau = 1400;  // arbitraire, à modif pour l'IHM : ici pour qu'on ait 8 cases par voie
+    private static int y_plateau = 764 ; // tailles du plateau
     public int nb_voie ;
     private ArrayList <Voie> voies = new ArrayList <Voie> (nb_voie) ;
     private static float eps = x_plateau/x_taille_case; // à modifier pour l'IHM
@@ -31,15 +31,15 @@ public class Plateau {
 
     public Plateau (int nb_voies){
         this.nb_voie = nb_voies;   // TODO attention là on se met dans le cas ou y'a pas de défilement et on va juste en haut de l'image de l'écran
-        this.y_taille_case = (float) y_plateau / (float) nb_voies; // on détermine la hauteur de chaque voie
+        y_taille_case = (float) y_plateau / (float) nb_voies; // on détermine la hauteur de chaque voie
         eps = x_taille_case/8; // on détermine le pas acceptable pour une bonne approximation
-        voies = new ArrayList <> (nb_voies -1);
+        voies = new ArrayList <> ();
         for (int i =2; i < nb_voies +1; i++) { //TODO pourquoi commencer à i=2?
             Voie v = new Voie(i);
             voies.add(v);
         }
 
-        this.froggy = new Grenouille(0,0); // placement initial du plateau : la grenouille commence son parcours en bas à gauche
+        this.froggy = new Grenouille(800,500); // placement initial du plateau : la grenouille commence son parcours en bas à gauche
     }
 
     public static float getX_taille_case() {
