@@ -17,82 +17,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-//import java.awt.image.BufferedImage;
 import java.io.*;
-
-import com.frogger.components.Grenouille;
-        import com.frogger.components.Plateau;
-        import com.frogger.components.Voie;
-        import com.frogger.components.Voiture;
-        import javafx.application.Application ;
-        import javafx.event.ActionEvent;
-        import javafx.event.EventHandler;
-        import javafx.geometry.Insets;
-        import javafx.geometry.Pos;
-        import javafx.scene.Group;
-        import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.TitledPane;
-        import javafx.scene.layout.GridPane;
-        import javafx.scene.layout.StackPane;
-        import javafx.scene.text.Font;
-        import javafx.scene.text.Text;
-        import javafx.scene.text.TextAlignment;
-        import javafx.stage.Stage;
-        import javafx.scene.paint.Color ;
-
-        import com.frogger.gamelogic.Partie;
-
-        import javax.imageio.ImageIO;
-        import javax.swing.*;
-        import java.awt.*;
-        import java.awt.event.ActionListener;
-        import java.awt.event.KeyEvent;
-        //import java.awt.image.BufferedImage;
-        import java.io.File;
-        import java.io.IOException;
-        import java.io.InputStream;
-        //import java.awt.Image;
-        import java.awt.Component;
-
-        import java.util.EventListener;
-        import java.awt.event.KeyEvent;
-        import java.awt.event.KeyListener;
-
-
-        import javafx.animation.AnimationTimer;
-        import javafx.animation.FadeTransition;
-        import javafx.application.Application;
-        import javafx.scene.Node;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.layout.HBox;
-        import javafx.scene.layout.Pane;
-        import javafx.scene.paint.Color;
-        import javafx.scene.shape.Rectangle;
-        import javafx.scene.text.Font;
-        import javafx.scene.text.Text;
-        import javafx.stage.Stage;
-        import javafx.util.Duration;
-
-        import java.util.ArrayList;
-        import java.util.List;
-
-import javafx.application.Application;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.animation.AnimationTimer;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import javafx.scene.shape.Rectangle;
+
+import javafx.scene.image.Image;
 
 
 public class App2 extends Application {
@@ -179,12 +109,12 @@ public class App2 extends Application {
         //stage.setScene(scene) ; //stage.setFullScreen(true);
         Partie partie = new Partie(8); //Plateau.draw_plateau() ;  //partie.jeu();
 
-        HBox boxz = new HBox();
-        root.getChildren().add(boxz);
+
+        //root.getChildren().add(boxz);
         Scene game_scene = new Scene(root, 1500, 700 ,Color.YELLOW);
         stage.setScene(game_scene);
 
-        try {
+        try {HBox boxz = new HBox();
 
 //            iv2.setFitHeight(Plateau.getY_taille_case());
 //            iv2.setFitWidth(Plateau.getX_taille_case());
@@ -194,64 +124,129 @@ public class App2 extends Application {
             Image image = new Image(inputstream);
 
             stage.getScene().setOnKeyPressed(event -> {
-                iv2.setImage(image);
-                iv2.setTranslateX(partie.plateau.froggy.Getg());
-                iv2.setTranslateY(partie.plateau.froggy.Getg());
-                iv2.setFitHeight(100);
-                iv2.setFitWidth(100);
+                //HBox box = new HBox();
+
+
+                //stage.setScene(game_scene);
+                //root.getChildren().add(boxz);
+
+//                Rectangle rect = new Rectangle(38, 38 ); //, Color.GREEN);
+//                //rect.setTranslateY(600 - 39);
+//                rect.setTranslateX(partie.plateau.froggy.Getg());
+//                rect.setTranslateY(partie.plateau.froggy.Getg());
+//                root.getChildren().add(rect);
+//                iv2.setImage(image);
+//                iv2.setTranslateX(partie.plateau.froggy.Getg());
+//                iv2.setTranslateY(partie.plateau.froggy.Getg());
+//                iv2.setFitHeight(80);
+//                iv2.setFitWidth(80);
 
                 if (KeyCode.UP == event.getCode()) {
                     partie.plateau.froggy.deplacement(0, -Plateau.getY_taille_case());
-                    iv2.setTranslateY(iv2.getTranslateY() - Plateau.getY_taille_case());
-                    System.out.print ("haut");
-                    System.out.print (iv2.getTranslateX());
+//                    iv2.setTranslateY( partie.plateau.froggy.Getb());
+//                    iv2.setTranslateX( partie.plateau.froggy.Getg());
+//                    rect.setTranslateY( partie.plateau.froggy.Getb());
+//                    rect.setTranslateX( partie.plateau.froggy.Getg());
+//                    System.out.print (" ");
+//                    System.out.print ("haut");
+//                    //System.out.print (iv2.getTranslateX());
+//                    System.out.print (" ");
+//                    System.out.print (partie.plateau.froggy.Getg());
+//                    System.out.print ("   ");
+//                    // System.out.print (iv2.getTranslateY() - Plateau.getY_taille_case() );
+//                    System.out.print (" ");
+//                    System.out.print (partie.plateau.froggy.Getb());
+//                    boxz.getChildren().add(iv2);
+//                    root.getChildren().add(boxz);
+                  //  root.getChildren().add(rect);
                     System.out.print ("   ");
-                    System.out.print (iv2.getTranslateY() - Plateau.getY_taille_case() );
-                    System.out.print ("   ");
-                stage.show();}
+                //stage.show();
+                }
                 if (KeyCode.DOWN == event.getCode()) {
                     partie.plateau.froggy.deplacement(0, 70);
-                    iv2.setTranslateY(iv2.getTranslateY() + 70);
-                    System.out.print ("bas");
-                    System.out.print (iv2.getTranslateX());
-                    System.out.print ("   ");
-                    System.out.print (iv2.getTranslateY() - Plateau.getY_taille_case() );
-                    System.out.print ("   ");
-                    stage.show();
+////                    iv2.setTranslateY( partie.plateau.froggy.Getb());
+////                    iv2.setTranslateX( partie.plateau.froggy.Getg());
+//                    rect.setTranslateY( partie.plateau.froggy.Getb());
+//                    rect.setTranslateX( partie.plateau.froggy.Getg());
+////                    //iv2.setTranslateY(iv2.getTranslateY() + 70);
+//                    System.out.print (" ");
+//                    System.out.print ("bas");
+////                    //System.out.print (iv2.getTranslateX());
+////                    System.out.print ("   ");
+////                    //System.out.print (iv2.getTranslateY() - Plateau.getY_taille_case() );
+////                    System.out.print ("   ");
+//                    System.out.print (" ");
+//                    System.out.print (partie.plateau.froggy.Getg());
+//                    System.out.print (" ");
+//                    System.out.print (partie.plateau.froggy.Getb());
+//                    boxz.getChildren().add(iv2);
+//                    root.getChildren().add(boxz);
+                   // root.getChildren().add(rect);
+                   // stage.show();
                 }
 
                 if (KeyCode.LEFT == event.getCode()) {
+
                     partie.plateau.froggy.deplacement(-Plateau.getX_taille_case(), 0);
-                    iv2.setTranslateX(iv2.getTranslateX() - Plateau.getX_taille_case());
-                    System.out.print ("gauche");
-                    System.out.print (iv2.getTranslateX());
-                    System.out.print ("   ");
-                    System.out.print (iv2.getTranslateY() - Plateau.getY_taille_case() );
-                    System.out.print ("   ");
-                    stage.show();
+////                    iv2.setTranslateY( partie.plateau.froggy.Getb());
+////                    iv2.setTranslateX( partie.plateau.froggy.Getg());
+//                    rect.setTranslateY( partie.plateau.froggy.Getb());
+//                    rect.setTranslateX( partie.plateau.froggy.Getg());
+////                    //iv2.setTranslateX(iv2.getTranslateX() - Plateau.getX_taille_case());
+//                    System.out.print (" ");
+//                    System.out.print ("gauche");
+////                    System.out.print (iv2.getTranslateX());
+////                    System.out.print ("   ");
+////                    System.out.print (iv2.getTranslateY() - Plateau.getY_taille_case() );
+////                    System.out.print ("   ");
+//                    System.out.print (" ");
+//                    System.out.print (partie.plateau.froggy.Getg());
+//                    System.out.print (" ");
+//                    System.out.print (partie.plateau.froggy.Getb());
+////                    boxz.getChildren().add(iv2);
+//                    root.getChildren().add(boxz);
+                  //  root.getChildren().add(rect);
+                    // stage.show();
                 };
                 if (KeyCode.RIGHT == event.getCode()) {
                     partie.plateau.froggy.deplacement(Plateau.getX_taille_case(), 0);
-                    iv2.setTranslateX(iv2.getTranslateX() + Plateau.getX_taille_case());
-                    System.out.print ("droite");
-                    System.out.print (iv2.getTranslateX());
-                    System.out.print ("   ");
-                    System.out.print (iv2.getTranslateY() - Plateau.getY_taille_case() );
-                    System.out.print ("   ");
-                    stage.show();
+//                    iv2.setTranslateY( partie.plateau.froggy.Getb());
+////                    iv2.setTranslateX( partie.plateau.froggy.Getg());
+//                    rect.setTranslateY( partie.plateau.froggy.Getb());
+//                    rect.setTranslateX( partie.plateau.froggy.Getg());
+//                    //iv2.setTranslateX(iv2.getTranslateX() + Plateau.getX_taille_case());
+//                    System.out.print (" ");
+//                    System.out.print ("droite");
+////                    System.out.print (iv2.getTranslateX());
+////                    System.out.print ("   ");
+////                    System.out.print (iv2.getTranslateY() - Plateau.getY_taille_case() );
+////                    System.out.print ("   ");
+//                    System.out.print (" ");
+//                    System.out.print (partie.plateau.froggy.Getg());
+//                    System.out.print (" ");
+//                    System.out.print (partie.plateau.froggy.Getb());
+////                    boxz.getChildren().add(iv2);
+//                    root.getChildren().add(boxz);
+                   // root.getChildren().add(rect);
+                    // stage.show();
                 }
                 else {};
 
 
-                stage.sizeToScene();
-                stage.show();
+                //stage.sizeToScene();
+                //  stage.show();
 
 //                box.getChildren().add(iv2);
 //                root.getChildren().add(box);
 //                stage.show();
             });
 
-            stage.show();
+
+//                iv2.setTranslateX(partie.plateau.froggy.Getg());
+//                iv2.setTranslateY(partie.plateau.froggy.Getg());
+//                iv2.setFitHeight(100);
+//                iv2.setFitWidth(100);
+            //stage.show();
 
 
         } catch (FileNotFoundException e) {
@@ -268,44 +263,62 @@ public class App2 extends Application {
                     }
                     voie.nouvelle_voiture();
                 }
-//                for (Voie voie : partie.plateau.getVoies()) {
-//                    for (Voiture voiture : voie.voitures) {
-////                        if (partie.plateau.froggy.collision(voiture)) {
-////                            partie.plateau.froggy.Setg(500);
-////                            partie.plateau.froggy.Setb(100);
-////                        }
-////                        if (voiture.proche_bord()) {
-////                            voie.voitures.remove(voie.voitures.indexOf(voiture));  // TODO peut être plutôt utiliser un dico
-////                        }
-//                    }
-//                }
-                HBox box = new HBox();
+                for (Voie voie : partie.plateau.getVoies()) {
+                    for (Voiture voiture : voie.voitures) {
+                        if (partie.plateau.froggy.collision(voiture)) {
+                            partie.plateau.froggy.Setg(700);
+                            partie.plateau.froggy.Setb(650);
+                            System.out.print("  ON A PERDUUUUUU  ");
+                        }
+                        if (voiture.proche_bord()) {
+                            //voie.voitures.remove(voiture);  // TODO quand je met cette ligne ça marche plus
+                            //System.out.print("  ON devrait enlever une voiture là   ");  // TODO ça ça marche bien
+                        }
+                    }
+                }
+//                HBox box = new HBox();
+                root.getChildren().clear();
+              //  root.getChildren().add ()
                 for (Voie voie : partie.plateau.getVoies()) {
                     for (Voiture voiture : voie.voitures) {
                         try {
+
+                            HBox box = new HBox();
                             FileInputStream inputstream = new FileInputStream("C://Users//Utilisateur//Documents//shrek.png");
                             Image image = new Image(inputstream);
                             ImageView iv2 = new ImageView();
                             iv2.setImage(image);
 //                            iv2.setX(voiture.getG_voiture());
 //                            iv2.setY(voiture.GetId_voiture() * Plateau.getY_taille_case());
-                            iv2.setX(voiture.getG_voiture());
-                            iv2.setY(500);
+                            iv2.setTranslateX(voiture.getG_voiture());
+                            iv2.setTranslateY(Plateau.getY_taille_case() * voiture.GetId_voiture());
+//                          iv2.setTranslateX(500);
+                            //iv2.setTranslateY(500);
+//                            iv2.setY(500);
 //                            iv2.setFitHeight(Plateau.getY_taille_case());
 //                            iv2.setFitWidth(voiture.GetTailleVoit()*Plateau.getY_taille_case());
-                            iv2.setFitHeight(10);
-                            iv2.setFitWidth(10);
-                           // iv2.setPreserveRatio(true);
+                            iv2.setFitHeight(Plateau.getY_taille_case()/2);
+                            iv2.setFitWidth(voiture.GetTailleVoit() * Plateau.getX_taille_case()/2);
+                            //iv2.setPreserveRatio(true);
                             iv2.setSmooth(true);
                             iv2.setCache(true);
                             box.getChildren().add(iv2);
+                            root.getChildren().add(box);
+
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
                     }
+
                 }
-                root.getChildren().add(box);
-                stage.show();
+           // root.getChildren().add(box);
+               // stage.show();
+                //root.getChildren().removeAll() ;
+                Rectangle rect = new Rectangle(38, 38 ); //, Color.GREEN);
+                //rect.setTranslateY(600 - 39);
+                rect.setTranslateX(partie.plateau.froggy.Getg());
+                rect.setTranslateY(partie.plateau.froggy.Getb());
+                root.getChildren().add(rect);
             };
         };
 
@@ -335,7 +348,7 @@ public class App2 extends Application {
 //                };
 
 
-//        timer.start();
+        timer.start();
         stage.show();
     }
 

@@ -23,9 +23,11 @@ public class Grenouille {
 
     public Grenouille ( float b, float g) {   // on instancie la grenouille en entrant ses cooordonnées de départ à gauche et en bas.
         // Celles en haut et à droite sont déduites par translation de la taille d'une case (x_taille_case et y_taille_case))
-        this.b = b + Plateau.getEps();    // on rajoute une petite quantité eps pour ne pas remplir exactement la case
+        //this.b = b + Plateau.getEps();    // on rajoute une petite quantité eps pour ne pas remplir exactement la case
         // On s'assure ainsi de ne pas avoir de problèmes de collisions avec les voies voisines
-        this.g = g + Plateau.getEps(); // TODO i dont know why, i dont want to know why, i shouldnt have to wonder why
+        this.g = 200; // TODO i dont know why, i dont want to know why, i shouldnt have to wonder why
+        this.b = 200;
+        this.d = g + Plateau.getX_taille_case() - Plateau.getEps();
         this.h = b + Plateau.getY_taille_case() - Plateau.getEps();
         this.d = g + Plateau.getX_taille_case() - Plateau.getEps();
         this.bord_b = true;  // à sa création, la grenouille est placée en bas au centre du plateau de jeu
@@ -106,13 +108,22 @@ public class Grenouille {
     }
 
     public boolean collision (Voiture voiture){  // on regarde si la voiture entrée en paramètre intercepte la grenouille
-        if (voiture.GetId_voiture()*Plateau.getY_taille_case()==this.h) { // on vérifie que la voiture et la grenouille sont sur la même voie
-//            if ((voiture.g_voiture <= this.g && this.g <= voiture.d_voiture) || (voiture.g_voiture <= this.d && this.d <= voiture.d_voiture) || (this.g <= voiture.g_voiture && voiture.g_voiture <= this.d)
-//                || (this.g <= voiture.d_voiture && voiture.d_voiture <= this.d)){
-            if ((voiture.getD_voiture()>=this.g && voiture.getVitesse_voiture()>0)|| (voiture.getG_voiture()<=this.d && voiture.getVitesse_voiture()<0)){
+
+        if ( Math.abs(voiture.GetId_voiture()*Plateau.getY_taille_case()-this.h) <= 100)
+        { // on vérifie que la voiture et la grenouille sont sur la même voie
+
+            if ((voiture.getG_voiture() <= this.g && this.g <= voiture.getD_voiture()) || (voiture.getG_voiture() <= this.d && this.d <= voiture.getD_voiture()) || (this.g <= voiture.getG_voiture() && voiture.getG_voiture() <= this.d)
+                || (this.g <= voiture.getD_voiture() && voiture.getD_voiture() <= this.d))
+            {
+
+//            if ((voiture.getD_voiture()>=this.g && voiture.getVitesse_voiture()>0)|| (voiture.getG_voiture()<=this.d && voiture.getVitesse_voiture()<0)){
                 return true;
-    }}
+            }
+            return false;
+
+        }
         return false;
+
     }
 
     public void place_grenouille (JPanel panel, JFrame f, float width, float height, float width_ecran, float heigth_ecran) {

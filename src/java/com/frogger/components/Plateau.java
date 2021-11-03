@@ -31,7 +31,9 @@ public class Plateau {
 
     public Plateau (int nb_voies){
         this.nb_voie = nb_voies;   // TODO attention là on se met dans le cas ou y'a pas de défilement et on va juste en haut de l'image de l'écran
-        y_taille_case = (float) y_plateau / (float) nb_voies; // on détermine la hauteur de chaque voie
+        //y_taille_case = (float) y_plateau / (float) nb_voies; // on détermine la hauteur de chaque voie
+        y_taille_case = 100;
+
         eps = x_taille_case/8; // on détermine le pas acceptable pour une bonne approximation
         voies = new ArrayList <> ();
         for (int i =2; i < nb_voies +1; i++) { //TODO pourquoi commencer à i=2?

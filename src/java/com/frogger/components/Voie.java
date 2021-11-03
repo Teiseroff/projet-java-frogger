@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Voie {
-    private int sens ;
+    private double sens ;
     private int voie_id ;
     private double v;
     private double frequence;
@@ -12,15 +12,15 @@ public class Voie {
     private ArrayList <Box> boxes = new ArrayList<>() ;
 
     public Voie (int voie_id) {
-        sens = (int)(Math.random() + 0.5);
-        v = sens* 40; // TODO adapter le 20 à la situation
-        frequence = 0.1 ; // Math.random();
+        sens = (Math.random() - 0.5);
+        v = sens* 20; // TODO adapter le 20 à la situation
+        frequence = 0.05 ; // Math.random();
         this.voitures = new ArrayList <> ();
         this.boxes = boxes ;
         this.voie_id = voie_id ;
     }
 
-    public int getSens() {
+    public double getSens() {
         return sens;
     }
 
