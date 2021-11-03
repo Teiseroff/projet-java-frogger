@@ -271,6 +271,7 @@ public class App2 extends Application {
                             System.out.print("  ON A PERDUUUUUU  ");
                         }
                         if (voiture.proche_bord()) {
+                           // voiture.
                             //voie.voitures.remove(voiture);  // TODO quand je met cette ligne ça marche plus
                             //System.out.print("  ON devrait enlever une voiture là   ");  // TODO ça ça marche bien
                         }
@@ -285,12 +286,13 @@ public class App2 extends Application {
 
                             HBox box = new HBox();
                             FileInputStream inputstream = new FileInputStream("C://Users//Utilisateur//Documents//shrek.png");
-                            Image image = new Image(inputstream);
+                            Image image = new Image(inputstream); // variable d'instance
+
                             ImageView iv2 = new ImageView();
                             iv2.setImage(image);
 //                            iv2.setX(voiture.getG_voiture());
 //                            iv2.setY(voiture.GetId_voiture() * Plateau.getY_taille_case());
-                            iv2.setTranslateX(voiture.getG_voiture());
+                            iv2.setTranslateX(voiture.getG_voiture()); // dans une méthode .show(à
                             iv2.setTranslateY(Plateau.getY_taille_case() * voiture.GetId_voiture());
 //                          iv2.setTranslateX(500);
                             //iv2.setTranslateY(500);

@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Voiture {
@@ -12,6 +14,7 @@ public class Voiture {
     private double vitesse_voiture;
     private float g_voiture, d_voiture;
     private int id_voiture;
+    private Image im ;
 
     public Voiture (double v, int id){
         this.id_voiture=id;
@@ -25,6 +28,16 @@ public class Voiture {
             d_voiture = Plateau.getX_plateau();
             g_voiture = d_voiture- taille_voiture * Plateau.getX_taille_case();
         }
+
+        FileInputStream inputstream = null;
+        try {
+            inputstream = new FileInputStream("C://Users//Utilisateur//Documents//shrek.png");
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        //this.im = new javafx.scene.image.Image(inputstream); // variable d'instance
+
     }
     public int GetTailleVoit (){
         return taille_voiture;
